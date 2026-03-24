@@ -125,7 +125,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
           #hero-inner { padding-left: 0 !important; padding-right: 0 !important; }
           #hero-img-wrap { height: 71svh; padding: 0 !important; }
           #hero-img-wrap img { object-position: right top !important; max-width: 80%; }
-          #hero-text { padding: 1.5rem; }
+          #hero-text { padding: 1.5rem; margin-top: 2rem; }
         }
       `}</style>
       <section id="hero" className="relative" style={{ backgroundColor: "#f9f9f9" }}>
@@ -151,6 +151,9 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
               priority
             />
           </div>
+
+          {/* Blue bar — mobile only, flush below image */}
+          <div className="lg:hidden" style={{ width: "100%", height: 15, backgroundColor: "var(--navy)", flexShrink: 0 }} />
 
           {/* Right: Content */}
           <div
