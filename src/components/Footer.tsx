@@ -104,7 +104,7 @@ export default function Footer() {
               <div className="flex flex-wrap gap-3 items-center justify-center">
                 {[
                   { src: "/assets/badge-htla.png", alt: "HTLA" },
-                  { src: "/assets/badge-reptl.jpg", alt: "REPTL" },
+                  { src: "/assets/badge-reptl.png", alt: "REPTL" },
                   { src: "/assets/badge-expertise.png", alt: "Expertise" },
                   { src: "/assets/badge-ttla.png", alt: "TTLA" },
                 ].map((badge) => (
