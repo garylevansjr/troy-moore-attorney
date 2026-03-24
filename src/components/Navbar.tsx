@@ -152,24 +152,27 @@ export default function Navbar() {
           {navData.phone.label}
         </a>
 
-        {/* Mobile hamburger — 2 bars, right-aligned */}
+        {/* Mobile hamburger — 2 bars, blue square, right-aligned */}
         <button
-          className="lg:hidden flex flex-col gap-[5px] p-2"
-          style={{ position: "absolute", right: "1.5rem", top: "50%", transform: "translateY(-50%)" }}
+          className="lg:hidden flex flex-col items-center justify-center gap-[5px]"
+          style={{
+            position: "absolute", right: "1rem", top: "50%", transform: "translateY(-50%)",
+            width: 38, height: 38, backgroundColor: "var(--navy)", borderRadius: 4,
+          }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
           <span
-            className="block w-6 h-[2px] transition-all duration-300"
+            className="block h-[2px] transition-all duration-300"
             style={{
-              backgroundColor: "var(--navy)",
+              width: 18, backgroundColor: "#ffffff",
               transform: mobileOpen ? "translateY(3.5px) rotate(45deg)" : "none",
             }}
           />
           <span
-            className="block w-6 h-[2px] transition-all duration-300"
+            className="block h-[2px] transition-all duration-300"
             style={{
-              backgroundColor: "var(--navy)",
+              width: 18, backgroundColor: "#ffffff",
               transform: mobileOpen ? "translateY(-3.5px) rotate(-45deg)" : "none",
             }}
           />
@@ -178,14 +181,17 @@ export default function Navbar() {
 
       {/* Mobile overlay */}
       <div
-        className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-6 transition-all duration-500"
+        className="fixed inset-0 z-40 flex flex-col justify-center transition-all duration-500"
         style={{
           backgroundColor: "#ffffff",
           opacity: mobileOpen ? 1 : 0,
           pointerEvents: mobileOpen ? "auto" : "none",
+          paddingLeft: "10vw",
+          gap: "1.25rem",
         }}
       >
-        {[...navData.leftLinks, ...navData.rightLinks].map((link) => (
+        {/* Primary links — kepler-std italic */}
+        {navData.leftLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
@@ -196,7 +202,26 @@ export default function Navbar() {
               fontStyle: "italic",
               fontSize: "clamp(1.87rem, 8.5vw, 2.975rem)",
               color: "var(--navy)",
-              transition: "color 0.2s ease",
+            }}
+          >
+            {link.label}
+          </Link>
+        ))}
+
+        {/* Divider */}
+        <div style={{ width: "40%", height: 1, backgroundColor: "rgba(11,55,93,0.15)" }} />
+
+        {/* Secondary links — avenir-lt-pro, 20% smaller */}
+        {navData.rightLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            onClick={() => setMobileOpen(false)}
+            style={{
+              fontFamily: '"avenir-lt-pro", sans-serif',
+              fontWeight: 400,
+              fontSize: "clamp(1.5rem, 6.8vw, 2.38rem)",
+              color: "var(--navy)",
             }}
           >
             {link.label}
