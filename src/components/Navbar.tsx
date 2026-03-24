@@ -9,6 +9,7 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const lastScrollY = useRef(0);
+  const logoRef = useRef<HTMLObjectElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -24,6 +25,29 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const svg = logoRef.current?.contentDocument;
+    if (!svg) return;
+
+    // Fade BADGE and TYPE in/out
+    ["TYPE", "BADGE"].forEach((id) => {
+      const el = svg.getElementById(id);
+      if (!el) return;
+      el.style.transition = "opacity 0.35s ease";
+      el.style.opacity = scrolled ? "0" : "1";
+    });
+
+    // Recolor paths/ellipses inside #MARK (skip first child path)
+    const mark = svg.getElementById("MARK");
+    if (mark) {
+      const els = Array.from(mark.querySelectorAll("path, ellipse"));
+      els.slice(1).forEach((el) => {
+        (el as SVGElement).style.transition = "fill 0.35s ease";
+        (el as SVGElement).style.fill = scrolled ? "#0b375d" : "";
+      });
+    }
+  }, [scrolled]);
 
   return (
     <>
@@ -47,22 +71,37 @@ export default function Navbar() {
             href="/"
             className="flex-shrink-0"
             style={{
-              /* logo top edge at top of viewport, hangs below navbar */
               position: "absolute",
-              top: 0,
+              top: scrolled ? -3 : 0,
               left: "3vw",
               transition: "all 0.35s ease",
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/logo.svg"
-              alt="Troy M. Moore"
+            <object
+              ref={logoRef}
+              data="/assets/logo.svg"
+              type="image/svg+xml"
+              aria-label="Troy M. Moore"
+              onLoad={() => {
+                const svg = logoRef.current?.contentDocument;
+                if (!svg) return;
+                ["TYPE", "BADGE"].forEach((id) => {
+                  const el = svg.getElementById(id);
+                  if (el) el.style.transition = "opacity 0.35s ease";
+                });
+                const mark = svg.getElementById("MARK");
+                if (mark) {
+                  Array.from(mark.querySelectorAll("path, ellipse")).slice(1).forEach((el) => {
+                    (el as SVGElement).style.transition = "fill 0.35s ease";
+                  });
+                }
+              }}
               style={{
-                height: scrolled ? 108 : 143,
+                height: scrolled ? 80 : 143,
                 width: "auto",
                 transition: "height 0.35s ease",
                 filter: "drop-shadow(0 4px 8px rgba(11,55,93,0.1))",
+                pointerEvents: "none",
               }}
             />
           </Link>
@@ -94,8 +133,8 @@ export default function Navbar() {
           ))}
           <a
             href={navData.phone.href}
-            className="ml-1 px-5 py-2 rounded-full text-[13px] font-semibold transition-all duration-300 hover:shadow-[0_0_20px_rgba(195,160,91,0.35)] hover:scale-[1.03]"
-            style={{ backgroundColor: "var(--gold)", color: "#fff" }}
+            className="nav-link text-[13px] tracking-wide font-semibold"
+            style={{ color: "var(--gold)" }}
           >
             {navData.phone.label}
           </a>

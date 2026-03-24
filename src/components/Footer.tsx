@@ -55,40 +55,98 @@ export default function Footer() {
   return (
     <footer>
       {/* Upper Footer — Locations / People */}
-      <div className="py-16 lg:py-20" style={{ backgroundColor: "var(--navy)" }}>
+      <div style={{ backgroundColor: "var(--navy)", paddingTop: "5vw", paddingBottom: "5vw" }}>
         <div
-          className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20"
-          style={{ paddingLeft: "3vw", paddingRight: "3vw" }}
+          className="flex flex-col md:flex-row items-stretch"
+          style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
         >
           {footerData.upperLinks.map((link, i) => (
-            <Link key={i} href={link.href} className="group">
-              <LetterAnimation
-                text={link.label}
-                as="h2"
-                className="text-white transition-colors duration-300 group-hover:text-[var(--gold)]"
-                scrollTrigger
-              />
+            <Link
+              key={i}
+              href={link.href}
+              className="group flex-1 flex items-center justify-center"
+              style={{
+                borderRight: i < footerData.upperLinks.length - 1 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                padding: "2vw 4vw",
+              }}
+            >
+              <h2 className="text-white transition-colors duration-300 group-hover:text-[var(--gold)] text-center" style={{ fontSize: "3vw" }}>
+                {link.label}
+              </h2>
             </Link>
           ))}
         </div>
       </div>
 
       {/* Lower Footer */}
-      <div className="py-10 lg:py-12" style={{ backgroundColor: "#061e36" }}>
+      <div style={{ backgroundColor: "#061e36", paddingTop: "2vw", paddingBottom: "2vw" }}>
         <div style={{ paddingLeft: "3vw", paddingRight: "3vw" }}>
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-6">
-            {/* Left: Logo + Social */}
-            <div className="lg:w-[22%]">
+            {/* Left: Logo + Badges */}
+            <div className="lg:w-[22%] flex flex-col items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/logo.webp"
+                src="/assets/icon-white.svg"
                 alt="Law Office of Troy M. Moore"
-                width={70}
-                height={85}
-                className="mb-4"
-                style={{ filter: "brightness(1.1)" }}
+                style={{ width: "8vw", minWidth: 80, marginBottom: "2vw" }}
               />
-              <p className="text-[12px] text-white/50 mb-3">Stay Connected</p>
+              {/* Badge logos */}
+              <div className="flex flex-wrap gap-3 items-center justify-center">
+                {[
+                  { src: "/assets/badge-htla.png", alt: "HTLA" },
+                  { src: "/assets/badge-reptl.jpg", alt: "REPTL" },
+                  { src: "/assets/badge-expertise.png", alt: "Expertise" },
+                  { src: "/assets/badge-ttla.png", alt: "TTLA" },
+                ].map((badge) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={badge.alt}
+                    src={badge.src}
+                    alt={badge.alt}
+                    style={{ height: 36, width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.6 }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="lg:w-[22%] flex flex-col gap-2">
+              <p className="eyebrow text-white/40 mb-2">Quick Links</p>
+              {footerData.quickLinks.map((link, i) => (
+                <Link
+                  key={i}
+                  href={link.href}
+                  className="text-white/60 hover:text-[var(--gold)] transition-colors"
+                  style={{ fontSize: "0.75vw" }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Locations */}
+            <div className="lg:w-[28%] flex flex-col gap-4">
+              <p className="eyebrow text-white/40 mb-2">Locations</p>
+              {footerData.locations.map((loc, i) => (
+                <div key={i}>
+                  <p className="text-white/80 font-semibold" style={{ fontSize: "0.75vw" }}>{loc.name}</p>
+                  <p className="text-white/45" style={{ fontSize: "0.7vw", lineHeight: 1.7 }}>{loc.address}<br />{loc.city}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Contact */}
+            <div className="lg:w-[28%] flex flex-col gap-2">
+              <p className="eyebrow text-white/40 mb-2">Contact</p>
+              <p className="text-white/60" style={{ fontSize: "0.75vw" }}>
+                Call or Text: <a href={`tel:${footerData.contact.phone}`} className="text-[var(--gold)] hover:text-white transition-colors">{footerData.contact.phone}</a>
+              </p>
+              <p className="text-white/60" style={{ fontSize: "0.75vw" }}>
+                <a href={`mailto:${footerData.contact.email}`} className="text-[var(--gold)] hover:text-white transition-colors">{footerData.contact.email}</a>
+              </p>
+              <p className="text-white/45" style={{ fontSize: "0.7vw", marginTop: "0.5vw" }}>{footerData.contact.hours}</p>
+              {/* Social icons */}
+              <p className="text-[12px] text-white/50 mt-4 mb-2">Stay Connected</p>
               <div ref={iconsRef} className="flex gap-2.5">
                 {footerData.socialLinks.map((social, i) => (
                   <a
@@ -105,39 +163,12 @@ export default function Footer() {
                 ))}
               </div>
             </div>
-
-            {/* Center: Keep up to date */}
-            <div className="lg:w-[22%] flex items-start pt-2">
-              <Link
-                href={footerData.keepUpToDate.href}
-                className="nav-link text-[11px] tracking-[0.15em] uppercase text-white/60 hover:text-[var(--gold)] transition-colors font-medium"
-              >
-                {footerData.keepUpToDate.label} →
-              </Link>
-            </div>
-
-            {/* Right: Link columns */}
-            <div className="lg:w-[56%] grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {footerData.columns.map((col, i) => (
-                <div key={i} className="flex flex-col gap-2.5">
-                  {col.map((link, j) => (
-                    <Link
-                      key={j}
-                      href={link.href}
-                      className="text-[11px] text-white/40 hover:text-[var(--gold)] transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Copyright */}
           <div
             className="mt-8 pt-5 text-center text-[10px] text-white/25"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingBottom: "5rem" }}
           >
             © {new Date().getFullYear()} Troy M. Moore, Attorney at Law. All rights reserved.
           </div>

@@ -8,6 +8,7 @@ import LatestCarousel from "@/components/LatestCarousel";
 import StayingInformed from "@/components/StayingInformed";
 import FeaturedArticle from "@/components/FeaturedArticle";
 import Footer from "@/components/Footer";
+import FixedCTA from "@/components/FixedCTA";
 
 export default function Home() {
   const [loaderDone, setLoaderDone] = useState(false);
@@ -32,6 +33,7 @@ export default function Home() {
         </main>
         <Footer />
       </div>
+      <FixedCTA show={loaderDone} />
     </>
   );
 }

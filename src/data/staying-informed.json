@@ -1,26 +1,62 @@
 [
   {
-    "label": "LISTEN",
-    "title": "Sidley Podcast Network",
-    "description": "Join us as we bring compelling perspectives on complex, noteworthy topics at the intersection of business and law.",
-    "href": "/podcasts"
+    "label": "PROBATE",
+    "title": "Probate Avoidance Package™",
+    "description": "Our unique Probate Avoidance Package™ helps you plan ahead to minimize or eliminate the need for probate court, saving your family time, money, and stress.",
+    "href": "/probate-avoidance"
   },
   {
-    "label": "EXPERIENCE",
-    "title": "Cross-Border Capabilities",
-    "description": "We collaborate across disciplines and borders to help clients in more than 70 countries achieve their business objectives.",
-    "href": "/cross-border"
+    "label": "PROBATE",
+    "title": "Texas Probate Administration",
+    "description": "We guide you through the full probate administration process in Texas, handling everything from filing paperwork to distributing assets efficiently and correctly.",
+    "href": "/probate-administration"
   },
   {
-    "label": "RESOURCES",
-    "title": "Sidley Resources on Trending Topics",
-    "description": "Stay up-to-date on a wide range of regulatory, transactional, and litigation issues facing global businesses.",
-    "href": "/resources"
+    "label": "PROBATE",
+    "title": "Houston Contested Will Attorney",
+    "description": "If a will is challenged, we provide strong legal representation to protect your rights and help resolve disputes fairly and quickly.",
+    "href": "/contested-will"
   },
   {
-    "label": "RESOURCES",
-    "title": "Sidley AI Monitor",
-    "description": "A centralized resource of content related to AI, including Sidley thought leadership, the latest laws and regulations, and access to our AI lawyers.",
-    "href": "/ai-monitor"
+    "label": "PROBATE",
+    "title": "Inheritance & Intestacy Issues",
+    "description": "When someone passes without a will, we help navigate the complex intestacy laws to ensure rightful heirs receive their inheritance.",
+    "href": "/intestacy"
+  },
+  {
+    "label": "PROBATE",
+    "title": "Small Estate Affidavit",
+    "description": "For estates that qualify as small, we assist in using the simplified affidavit process to settle affairs without lengthy court involvement.",
+    "href": "/small-estate-affidavit"
+  },
+  {
+    "label": "PROBATE",
+    "title": "Beneficiary Interpleader Litigation",
+    "description": "We represent clients in disputes where multiple parties claim the same inheritance, ensuring a fair and legally sound resolution.",
+    "href": "/interpleader"
+  },
+  {
+    "label": "ESTATE PLANNING",
+    "title": "Estate Planning & Wills",
+    "description": "Our team helps you create clear, personalized wills and estate plans to protect your assets and provide peace of mind for your family's future.",
+    "href": "/estate-planning"
+  },
+  {
+    "label": "ESTATE PLANNING",
+    "title": "Trust Administrations",
+    "description": "We manage trust administration to make sure trustees fulfill their duties and beneficiaries receive their rightful shares according to the trust terms.",
+    "href": "/trust-administration"
+  },
+  {
+    "label": "PERSONAL INJURY",
+    "title": "Car Accidents",
+    "description": "If you've been injured in a car accident, we fight to get you the compensation you deserve for medical bills, lost wages, and pain and suffering.",
+    "href": "/car-accidents"
+  },
+  {
+    "label": "PERSONAL INJURY",
+    "title": "Trucking Accidents",
+    "description": "Trucking accidents often involve complex liability issues—our experienced attorneys handle these cases aggressively to protect your rights and maximize your recovery.",
+    "href": "/trucking-accidents"
   }
 ]

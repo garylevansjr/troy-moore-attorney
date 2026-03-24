@@ -7,6 +7,49 @@ import LetterAnimation from "./LetterAnimation";
 import ScrollReveal from "./ScrollReveal";
 import heroData from "@/data/hero.json";
 
+const STATS = [
+  { value: 24, suffix: "+", label: "Years Experience" },
+  { value: 1700, suffix: "+", label: "Complex Cases Handled" },
+  { value: 3000, suffix: "+", label: "Clients Served" },
+];
+
+function StatCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {
+  const numRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!numRef.current) return;
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: value,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: { trigger: numRef.current, start: "top 85%", once: true },
+      onUpdate() {
+        if (numRef.current) numRef.current.textContent = Math.round(obj.val).toLocaleString();
+      },
+    });
+  }, [value]);
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <div style={{ lineHeight: 1, marginBottom: "0.5vw" }}>
+        <span
+          ref={numRef}
+          style={{ color: "#ffffff", fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", fontSize: "clamp(3.3rem, 6.6vw, 6.6rem)" }}
+        >
+          0
+        </span>
+        <span style={{ color: "#ffffff", fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", fontSize: "clamp(3.3rem, 6.6vw, 6.6rem)" }}>
+          {suffix}
+        </span>
+      </div>
+      <p style={{ color: "var(--gold)", fontFamily: "var(--font-eyebrow)", fontSize: "clamp(0.6rem, 1vw, 1rem)", letterSpacing: "0.25em", textTransform: "uppercase", margin: 0 }}>
+        {label}
+      </p>
+    </div>
+  );
+}
+
 export default function Hero({ loaderDone }: { loaderDone: boolean }) {
   const imageRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLParagraphElement>(null);
@@ -32,11 +75,11 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
 
   return (
     <>
-      <section id="hero" className="relative" style={{ paddingTop: "calc(72px + 5vw)", backgroundColor: "#f9f9f9" }}>
+      <section id="hero" className="relative" style={{ paddingTop: "calc(72px + 3.5vw)", backgroundColor: "#f9f9f9" }}>
         {/* Container with 15vw padding */}
         <div
           className="mx-auto flex flex-col lg:flex-row items-stretch"
-          style={{ paddingLeft: "5vw", paddingRight: "10vw", maxWidth: 1800, minWidth: 0 }}
+          style={{ paddingLeft: "5vw", paddingRight: "10vw", minWidth: 0 }}
         >
           {/* Left: Hero Image */}
           <div
@@ -57,7 +100,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
           {/* Right: Content */}
           <div
             className="lg:w-[52%] flex flex-col justify-center"
-            style={{ paddingTop: "2vw", paddingBottom: "2vw" }}
+            style={{ paddingBottom: "2vw" }}
           >
             {/* Eyebrow */}
             <p
@@ -128,16 +171,25 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
         </div>
       </section>
 
-      {/* Blue bar below hero */}
+      {/* Blue bar with stats */}
       <div
         style={{
           width: "100%",
-          height: 60,
-          backgroundImage: "url(/assets/blue.png)",
+          backgroundImage: "url(/assets/blue-bg2.png)",
           backgroundPosition: "center center",
           backgroundSize: "cover",
+          paddingTop: "5vw",
+          paddingBottom: "5vw",
         }}
-      />
+      >
+        <div style={{ maxWidth: 1600, margin: "0 auto", paddingLeft: "5vw", paddingRight: "5vw" }}>
+          <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center", flexWrap: "wrap", gap: "3vw" }}>
+            {STATS.map((stat) => (
+              <StatCounter key={stat.label} {...stat} />
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

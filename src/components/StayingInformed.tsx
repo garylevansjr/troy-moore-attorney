@@ -53,13 +53,13 @@ export default function StayingInformed() {
 
   return (
     <section id="staying-informed" ref={sectionRef} className="" style={{ paddingTop: "5vw", paddingBottom: "5vw", minHeight: "75vh", backgroundColor: "#f9f9f9" }}>
-      <div className="mx-auto" style={{ paddingLeft: "10vw", paddingRight: "10vw", maxWidth: 1800 }}>
+      <div style={{ paddingLeft: "10vw", paddingRight: "10vw" }}>
         {/* Section title */}
         <div style={{ marginBottom: "3vw" }}>
           <p className="eyebrow" style={{ color: "var(--navy)", opacity: 0.5, marginBottom: "0.5vw" }}>
-            STAYING
+            CORE PRACTICE
           </p>
-          <h2>Informed</h2>
+          <h2>Areas</h2>
         </div>
 
         {/* Rows */}

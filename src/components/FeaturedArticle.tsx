@@ -61,14 +61,24 @@ export default function FeaturedArticle() {
     >
       <div className="flex flex-col lg:flex-row items-center">
         {/* Left: Image — touches left edge of window */}
-        <div ref={imageRef} className="lg:w-[50%]" style={{ opacity: 0 }}>
-          <Image
-            src={data.articleImage}
-            alt={data.headline}
-            width={900}
-            height={540}
-            className="w-full h-auto object-cover"
-          />
+        <div
+          ref={imageRef}
+          className="lg:w-[50%] relative"
+          style={{ opacity: 0, padding: "15px", borderTop: "2px solid var(--navy)", borderRight: "2px solid var(--navy)", borderBottom: "2px solid var(--navy)" }}
+        >
+          <div
+            style={{
+              boxShadow: "inset -8px 0 24px rgba(0,0,0,0.18), inset 0 -12px 32px rgba(0,0,0,0.22), inset 0 8px 20px rgba(0,0,0,0.12), inset 8px 0 16px rgba(0,0,0,0.08)",
+            }}
+          >
+            <Image
+              src={data.articleImage}
+              alt={data.headline}
+              width={900}
+              height={540}
+              className="w-full h-auto object-cover block"
+            />
+          </div>
         </div>
 
         {/* Right: Content card */}
@@ -94,15 +104,15 @@ export default function FeaturedArticle() {
           >
             {data.description}
           </p>
-          <Link
-            href={data.buttonHref}
-            className="btn-shimmer inline-flex items-center gap-2 px-7 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-[0_0_25px_rgba(195,160,91,0.35)] hover:scale-[1.03]"
-            style={{ backgroundColor: "var(--gold)", color: "#fff" }}
-          >
+          <Link href={data.buttonHref} className="btn-cta">
             {data.buttonText}
-            <svg width="14" height="14" fill="none" viewBox="0 0 16 16">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className="cta-circle">
+              <svg viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "1.625em", height: "1.625em" }}>
+                <path className="CircleIcon_circle__vewPw" d="M0.75 14.5a13.75 13.75 0 1 0 27.5 0a13.75 13.75 0 1 0 -27.5 0" />
+                <path className="CircleIcon_circle-overlay__lg7sz" d="M0.75,14.5A13.75,13.75 0 1 1 28.25,14.5A13.75,13.75 0 1 1 0.75,14.5" />
+                <path className="CircleIcon_icon__n80xg" d="M12.5 11L16 14.5L12.5 18" stroke="currentColor" strokeLinecap="round" />
+              </svg>
+            </span>
           </Link>
         </div>
       </div>

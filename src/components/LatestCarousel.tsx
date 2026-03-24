@@ -58,31 +58,31 @@ export default function LatestCarousel() {
             align-items: center;
           }
           .latest-swiper .swiper-slide {
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        opacity 0.6s ease,
-                        filter 0.6s ease;
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.7s ease,
+                        filter 0.7s ease;
             transform-origin: center center;
           }
           .latest-swiper .swiper-slide:not(.swiper-slide-active) {
-            transform: scale(0.88);
-            opacity: 0.6;
-            filter: brightness(0.9);
+            transform: scale(0.75);
+            opacity: 0.45;
+            filter: brightness(0.8) blur(3px);
           }
           .latest-swiper .swiper-slide-active {
             transform: scale(1);
             opacity: 1;
-            filter: brightness(1);
+            filter: brightness(1) blur(0px);
             z-index: 2;
           }
           .latest-swiper .swiper-slide-next {
-            transform: scale(0.93);
-            opacity: 0.8;
-            filter: brightness(0.95);
+            transform: scale(0.82);
+            opacity: 0.6;
+            filter: brightness(0.85) blur(2px);
           }
           .latest-swiper .swiper-slide-prev {
-            transform: scale(0.93);
-            opacity: 0.8;
-            filter: brightness(0.95);
+            transform: scale(0.82);
+            opacity: 0.6;
+            filter: brightness(0.85) blur(2px);
           }
         `}</style>
         <Swiper
@@ -120,7 +120,7 @@ export default function LatestCarousel() {
                       className="absolute top-0 right-0 flex flex-col justify-between transition-all duration-700 ease-out group-hover:translate-y-[-6px] group-hover:translate-x-[6px] group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
                       style={{
                         width: "48%",
-                        height: "72%",
+                        height: "52%",
                         backgroundColor: isActive ? "#0c375d" : "#c3a05b",
                         color: "#ffffff",
                         padding: "2vw",

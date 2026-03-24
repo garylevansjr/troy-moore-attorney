@@ -1,7 +1,7 @@
 {
   "upperLinks": [
-    { "label": "Locations", "href": "/locations" },
-    { "label": "People", "href": "/people" }
+    { "label": "Protect Your Legacy", "href": "/locations" },
+    { "label": "Meet Our Team", "href": "/people" }
   ],
   "socialLinks": [
     { "label": "LinkedIn", "href": "https://linkedin.com", "icon": "linkedin" },
@@ -9,26 +9,30 @@
     { "label": "Facebook", "href": "https://facebook.com", "icon": "facebook" },
     { "label": "Instagram", "href": "https://instagram.com", "icon": "instagram" }
   ],
-  "keepUpToDate": {
-    "label": "KEEP UP TO DATE WITH SIDLEY",
-    "href": "/subscribe"
-  },
-  "columns": [
-    [
-      { "label": "Client Login", "href": "/client-login" },
-      { "label": "Sitemap", "href": "/sitemap" },
-      { "label": "Attorney Advertising", "href": "/attorney-advertising" }
-    ],
-    [
-      { "label": "Privacy Policy", "href": "/privacy" },
-      { "label": "Terms and Conditions", "href": "/terms" },
-      { "label": "Social Media Directory", "href": "/social-media" }
-    ],
-    [
-      { "label": "Contact", "href": "/contact" },
-      { "label": "Award Methodologies", "href": "/awards" },
-      { "label": "Medical Plan Transparency", "href": "/medical-plan" },
-      { "label": "Cookie Settings", "href": "#cookie-settings" }
-    ]
-  ]
+  "quickLinks": [
+    { "label": "About", "href": "/about" },
+    { "label": "Probate", "href": "/probate" },
+    { "label": "Estate Planning", "href": "/estate-planning" },
+    { "label": "Other Practice Areas", "href": "/practice-areas" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Videos", "href": "/videos" },
+    { "label": "Contact Us", "href": "/contact" }
+  ],
+  "locations": [
+    {
+      "name": "Northwest Houston",
+      "address": "20333 State Highway 249 Suite 140",
+      "city": "Houston, Texas 77070"
+    },
+    {
+      "name": "The Heights",
+      "address": "408 E 7th Street, Suite B",
+      "city": "Houston, Texas 77070"
+    }
+  ],
+  "contact": {
+    "phone": "281-609-6369",
+    "email": "info@troymoorelaw.com",
+    "hours": "Mon-Sun: 24 hours"
+  }
 }

@@ -144,7 +144,81 @@ p, a, span, li, label, input, textarea, button {
   color: var(--gold) !important;
 }
 
-/* Button shimmer */
+/* CTA Button */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.55em 0.55em 0.55em 1.4em;
+  border-radius: 9999px;
+  background-color: var(--navy);
+  color: #fff;
+  font-weight: 400;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-cta:hover {
+  background-color: #0d4a7a;
+  box-shadow: 0 8px 28px rgba(11, 55, 93, 0.3);
+  transform: scale(1.03);
+}
+
+.btn-cta:hover {
+  color: #fff;
+}
+
+.btn-cta .cta-circle {
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: rgba(255,255,255,0.6);
+}
+
+.btn-cta:hover .cta-circle {
+  background: transparent;
+  color: var(--gold);
+}
+
+/* Circle SVG stroke animation */
+.btn-cta .cta-circle svg .CircleIcon_circle__vewPw {
+  stroke: rgba(255,255,255,0.3);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+}
+
+.btn-cta .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.btn-cta:hover .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
+  stroke-dashoffset: 0;
+}
+
+.btn-cta .cta-circle svg .CircleIcon_icon__n80xg {
+  stroke: currentColor;
+  transition: stroke 0.3s ease;
+}
+
+/* Button shimmer (keep for legacy) */
 .btn-shimmer {
   position: relative;
   overflow: hidden;
