@@ -53,6 +53,9 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
 export default function Hero({ loaderDone }: { loaderDone: boolean }) {
   const imageRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLParagraphElement>(null);
+  const signatureRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const lottieInstance = useRef<any>(null);
 
   useEffect(() => {
     if (!loaderDone) return;
@@ -71,6 +74,46 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
     });
 
     return () => ctx.revert();
+  }, [loaderDone]);
+
+  // Load Lottie signature via CDN to avoid SSR/bundler issues
+  useEffect(() => {
+    if (!loaderDone) return;
+    const container = signatureRef.current;
+    if (!container) return;
+
+    let destroyed = false;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const win = window as any;
+
+    const init = (data: unknown) => {
+      if (destroyed || !win.lottie) return;
+      lottieInstance.current = win.lottie.loadAnimation({
+        container,
+        renderer: "svg",
+        loop: false,
+        autoplay: false,
+        animationData: data,
+      });
+      // Play after hero content has animated in
+      setTimeout(() => lottieInstance.current?.play(), 1200);
+    };
+
+    const loadData = () => fetch("/assets/signature.json").then((r) => r.json());
+
+    if (win.lottie) {
+      loadData().then(init);
+    } else {
+      const script = document.createElement("script");
+      script.src = "https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js";
+      script.onload = () => loadData().then(init);
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      destroyed = true;
+      lottieInstance.current?.destroy();
+    };
   }, [loaderDone]);
 
   return (
@@ -159,10 +202,8 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
                 &ldquo;{heroData.quote}&rdquo;
               </blockquote>
               <div style={{ width: "92%", display: "flex", justifyContent: "flex-end" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/assets/signature.svg"
-                  alt="Troy M. Moore Signature"
+                <div
+                  ref={signatureRef}
                   style={{ width: "14.1vw", minWidth: 177, opacity: 0.7 }}
                 />
               </div>
