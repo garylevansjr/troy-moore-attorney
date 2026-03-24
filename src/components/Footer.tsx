@@ -89,7 +89,7 @@ export default function Footer() {
       </div>
 
       {/* Lower Footer */}
-      <div style={{ backgroundColor: "#061e36", paddingTop: "2vw", paddingBottom: "2vw" }}>
+      <div style={{ backgroundColor: "#061e36", paddingTop: "clamp(2rem, 4vw, 5rem)", paddingBottom: "clamp(1rem, 2vw, 3rem)" }}>
         <div style={{ paddingLeft: "clamp(1.5rem, 3vw, 4rem)", paddingRight: "clamp(1.5rem, 3vw, 4rem)" }}>
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-6">
             {/* Left: Logo + Badges */}
@@ -177,8 +177,8 @@ export default function Footer() {
 
           {/* Copyright */}
           <div
-            className="mt-8 pt-5 text-center text-[10px] text-white/25"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingBottom: "5rem" }}
+            className="text-center text-[10px] text-white/25"
+            style={{ padding: "2rem 0 8rem" }}
           >
             © {new Date().getFullYear()} Troy M. Moore, Attorney at Law. All rights reserved.
           </div>
