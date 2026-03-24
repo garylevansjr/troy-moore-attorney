@@ -218,22 +218,24 @@ export default function Navbar() {
         {/* Divider */}
         <div style={{ width: "40%", height: 1, backgroundColor: "rgba(11,55,93,0.15)" }} />
 
-        {/* Secondary links — avenir-lt-pro, 20% smaller */}
-        {navData.rightLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            onClick={() => setMobileOpen(false)}
-            style={{
-              fontFamily: '"avenir-lt-pro", sans-serif',
-              fontWeight: 400,
-              fontSize: "clamp(1.5rem, 6.8vw, 2.38rem)",
-              color: "var(--navy)",
-            }}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {/* Secondary links — avenir-lt-pro, 35% smaller, tighter gap */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
+          {navData.rightLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                fontFamily: '"avenir-lt-pro", sans-serif',
+                fontWeight: 400,
+                fontSize: "clamp(0.975rem, 4.4vw, 1.55rem)",
+                color: "var(--navy)",
+              }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </>
   );
