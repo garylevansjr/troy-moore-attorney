@@ -67,10 +67,10 @@ export default function Footer() {
               className="group flex-1 flex items-center justify-center"
               style={{
                 borderRight: i < footerData.upperLinks.length - 1 ? "1px solid rgba(255,255,255,0.12)" : "none",
-                padding: "2vw 4vw",
+                padding: "clamp(1.5rem, 2vw, 3rem) clamp(1rem, 4vw, 5rem)",
               }}
             >
-              <h2 className="text-white transition-colors duration-300 group-hover:text-[var(--gold)] text-center" style={{ fontSize: "3vw" }}>
+              <h2 className="text-white transition-colors duration-300 group-hover:text-[var(--gold)] text-center" style={{ fontSize: "clamp(2.2rem, 3vw, 5rem)" }}>
                 {link.label}
               </h2>
             </Link>
