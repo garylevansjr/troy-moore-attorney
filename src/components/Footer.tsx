@@ -175,12 +175,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Copyright */}
-          <div
-            className="text-center text-[10px] text-white/25"
-            style={{ padding: "2rem 0 8rem" }}
-          >
-            © {new Date().getFullYear()} Troy M. Moore, Attorney at Law. All rights reserved.
+        </div>
+      </div>
+
+      {/* Copyright bar */}
+      <div style={{ backgroundColor: "#ffffff", paddingLeft: "3vw", paddingRight: "3vw", paddingTop: "1.25rem", paddingBottom: "8rem", borderTop: "1px solid rgba(11,55,93,0.08)" }}>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3" style={{ color: "var(--navy)" }}>
+          <p style={{ fontSize: "0.72rem", opacity: 0.5 }}>
+            © {new Date().getFullYear()} Law Office of Troy M. Moore. All rights reserved.
+          </p>
+          <div className="flex items-center gap-5">
+            <Link href="/privacy-policy" style={{ fontSize: "0.72rem", color: "var(--navy)", opacity: 0.5, transition: "opacity 0.2s" }} className="hover:opacity-100">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-and-conditions" style={{ fontSize: "0.72rem", color: "var(--navy)", opacity: 0.5, transition: "opacity 0.2s" }} className="hover:opacity-100">
+              Terms &amp; Conditions
+            </Link>
           </div>
         </div>
       </div>
