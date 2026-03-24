@@ -172,14 +172,14 @@ export default function Navbar() {
           <span
             className="block h-[2px] transition-all duration-300"
             style={{
-              width: 18, backgroundColor: "#ffffff",
+              width: Math.round((scrolled ? 56 : 72) * 0.56), backgroundColor: "#ffffff",
               transform: mobileOpen ? "translateY(3.5px) rotate(45deg)" : "none",
             }}
           />
           <span
             className="block h-[2px] transition-all duration-300"
             style={{
-              width: 18, backgroundColor: "#ffffff",
+              width: Math.round((scrolled ? 56 : 72) * 0.56), backgroundColor: "#ffffff",
               transform: mobileOpen ? "translateY(-3.5px) rotate(-45deg)" : "none",
             }}
           />
