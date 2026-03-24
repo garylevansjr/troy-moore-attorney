@@ -143,6 +143,15 @@ export default function Navbar() {
           </a>
         </div>
 
+        {/* Mobile phone number — left of hamburger */}
+        <a
+          href={navData.phone.href}
+          className="lg:hidden nav-link font-semibold"
+          style={{ position: "absolute", right: "4rem", top: "50%", transform: "translateY(-50%)", color: "var(--navy)", fontSize: "13px" }}
+        >
+          {navData.phone.label}
+        </a>
+
         {/* Mobile hamburger — 2 bars, right-aligned */}
         <button
           className="lg:hidden flex flex-col gap-[5px] p-2"
@@ -193,20 +202,6 @@ export default function Navbar() {
             {link.label}
           </Link>
         ))}
-        <a
-          href={navData.phone.href}
-          className="mt-4 px-8 py-3 rounded-full"
-          style={{
-            fontFamily: '"kepler-std", serif',
-            fontWeight: 300,
-            fontStyle: "italic",
-            fontSize: "clamp(1.275rem, 5.95vw, 2.125rem)",
-            backgroundColor: "var(--gold)",
-            color: "#fff",
-          }}
-        >
-          {navData.phone.label}
-        </a>
       </div>
     </>
   );
