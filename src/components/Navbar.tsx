@@ -121,7 +121,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Right: right links + phone CTA */}
+        {/* Right: right links + divider + phone CTA */}
         <div className="hidden lg:flex items-center gap-5">
           {navData.rightLinks.map((link) => (
             <Link
@@ -133,6 +133,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <div style={{ width: 1, height: 18, backgroundColor: "rgba(11,55,93,0.2)" }} />
           <a
             href={navData.phone.href}
             className="nav-link tracking-wide font-semibold"
@@ -142,9 +143,10 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile hamburger — 2 bars, right-aligned */}
         <button
-          className="lg:hidden flex flex-col gap-[5px] p-2"
+          className="lg:hidden flex flex-col gap-[5px] p-2 ml-auto"
+          style={{ marginRight: "1.5rem" }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -152,21 +154,14 @@ export default function Navbar() {
             className="block w-6 h-[2px] transition-all duration-300"
             style={{
               backgroundColor: "var(--navy)",
-              transform: mobileOpen ? "rotate(45deg) translateY(7px)" : "none",
+              transform: mobileOpen ? "rotate(45deg) translateY(3.5px)" : "none",
             }}
           />
           <span
             className="block w-6 h-[2px] transition-all duration-300"
             style={{
               backgroundColor: "var(--navy)",
-              opacity: mobileOpen ? 0 : 1,
-            }}
-          />
-          <span
-            className="block w-6 h-[2px] transition-all duration-300"
-            style={{
-              backgroundColor: "var(--navy)",
-              transform: mobileOpen ? "rotate(-45deg) translateY(-7px)" : "none",
+              transform: mobileOpen ? "rotate(-45deg) translateY(-3.5px)" : "none",
             }}
           />
         </button>
