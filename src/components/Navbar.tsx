@@ -153,17 +153,18 @@ export default function Navbar() {
         <a
           href={navData.phone.href}
           className="lg:hidden nav-link font-semibold"
-          style={{ position: "absolute", right: "4rem", top: "50%", transform: "translateY(-50%)", color: "var(--navy)", fontSize: "16px" }}
+          style={{ position: "absolute", right: (scrolled ? 56 : 72) + 20, top: "50%", transform: "translateY(-50%)", color: "var(--navy)", fontSize: "16px" }}
         >
           {navData.phone.label}
         </a>
 
-        {/* Mobile hamburger — 2 bars, blue square, right-aligned */}
+        {/* Mobile hamburger — full nav-height square flush to right */}
         <button
           className="lg:hidden flex flex-col items-center justify-center gap-[5px]"
           style={{
-            position: "absolute", right: "1rem", top: "50%", transform: "translateY(-50%)",
-            width: 38, height: 38, backgroundColor: "var(--navy)", borderRadius: 4,
+            position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)",
+            width: scrolled ? 56 : 72, height: scrolled ? 56 : 72,
+            backgroundColor: "var(--navy)", borderRadius: 0,
           }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
