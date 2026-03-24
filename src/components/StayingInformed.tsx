@@ -10,6 +10,7 @@ export default function StayingInformed() {
 
   useEffect(() => {
     if (!sectionRef.current) return;
+    const section = sectionRef.current;
 
     const ctx = gsap.context(() => {
       const rows = sectionRef.current!.querySelectorAll(".info-row");
@@ -48,7 +49,31 @@ export default function StayingInformed() {
       );
     }, sectionRef);
 
-    return () => ctx.revert();
+    // Proximity scale — rows grow toward cursor based on vertical distance
+    const rowEls = Array.from(section.querySelectorAll<HTMLElement>(".info-row"));
+
+    const onMove = (e: MouseEvent) => {
+      rowEls.forEach((row) => {
+        const rect = row.getBoundingClientRect();
+        const centerY = rect.top + rect.height / 2;
+        const dist = Math.abs(e.clientY - centerY);
+        const proximity = Math.max(0, 1 - dist / 220);
+        const scale = 1 + Math.pow(proximity, 2) * 0.08;
+        gsap.to(row, { scale, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+      });
+    };
+    const onLeave = () => {
+      rowEls.forEach((row) => gsap.to(row, { scale: 1, duration: 0.4, ease: "power2.out", overwrite: "auto" }));
+    };
+
+    section.addEventListener("mousemove", onMove);
+    section.addEventListener("mouseleave", onLeave);
+
+    return () => {
+      ctx.revert();
+      section.removeEventListener("mousemove", onMove);
+      section.removeEventListener("mouseleave", onLeave);
+    };
   }, []);
 
   return (
@@ -63,13 +88,40 @@ export default function StayingInformed() {
         </div>
 
         {/* Rows */}
-        <div>
+        <style>{`
+          .info-row .cta-circle {
+            width: 4.4em; height: 4.4em; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; position: relative; overflow: hidden;
+            color: rgba(11,55,93,0.35);
+            transition: color 0.6s ease;
+          }
+          .info-row:hover .cta-circle { color: var(--gold); }
+          .info-row .cta-circle svg .CircleIcon_circle__vewPw {
+            stroke: rgba(11,55,93,0.2); stroke-width: 1.5; fill: none;
+            stroke-dasharray: 100; stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s ease, stroke 0.6s ease;
+          }
+          .info-row .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
+            stroke: var(--gold); stroke-width: 1.5; fill: none;
+            stroke-dasharray: 100; stroke-dashoffset: 100;
+            transition: stroke-dashoffset 1s ease;
+          }
+          .info-row:hover .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
+            stroke-dashoffset: 0;
+          }
+          .info-row .cta-circle svg .CircleIcon_icon__n80xg {
+            stroke: currentColor; fill: none;
+            transition: stroke 0.6s ease;
+          }
+        `}</style>
+        <div className="section-stack">
           {items.map((item, i) => (
             <div key={i}>
               <div className="divider-line" />
               <Link
                 href={item.href}
-                className="info-row group flex flex-col md:flex-row md:items-center transition-all duration-300 hover:pl-3"
+                className="info-row group flex flex-col md:flex-row md:items-center transition-[padding,color] duration-300 hover:pl-3"
                 style={{ padding: "clamp(1.25rem, 3vw, 3rem) 0", opacity: 0 }}
               >
                 {/* Left label */}
@@ -88,15 +140,14 @@ export default function StayingInformed() {
                     {item.description}
                   </p>
                 </div>
-                {/* Arrow */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 640"
-                  className="hidden md:block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                  style={{ color: "var(--gold)", flex: 1, fill: "currentColor" }}
-                >
-                  <path d="M320 80C452.5 80 560 187.5 560 320C560 452.5 452.5 560 320 560C187.5 560 80 452.5 80 320C80 187.5 187.5 80 320 80zM320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM413.7 325.7L419.4 320L413.7 314.3L341.7 242.3L336 236.6L324.7 247.9L330.4 253.6L388.7 311.9L224 311.9L224 327.9L388.7 327.9L324.7 391.9L336 403.2L413.7 325.5z" />
-                </svg>
+                {/* Circle CTA */}
+                <span className="cta-circle hidden md:flex" style={{ marginLeft: "auto" }}>
+                  <svg width="58" height="58" viewBox="0 0 29 29" fill="none">
+                    <path className="CircleIcon_circle__vewPw" d="M0.75 14.5a13.75 13.75 0 1 0 27.5 0a13.75 13.75 0 1 0 -27.5 0" />
+                    <path className="CircleIcon_circle-overlay__lg7sz" d="M0.75,14.5A13.75,13.75 0 1 1 28.25,14.5A13.75,13.75 0 1 1 0.75,14.5" />
+                    <path className="CircleIcon_icon__n80xg" d="M12.5 11L16 14.5L12.5 18" strokeLinecap="round" />
+                  </svg>
+                </span>
               </Link>
             </div>
           ))}
