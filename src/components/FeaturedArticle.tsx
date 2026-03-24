@@ -49,6 +49,15 @@ export default function FeaturedArticle() {
   }, []);
 
   return (
+    <>
+    <style>{`
+      @media (max-width: 1023px) {
+        #featured-card { padding: 1.5rem !important; }
+        #featured-card h3 { margin-bottom: 1rem !important; }
+        #featured-card p { margin-bottom: 1rem !important; }
+        #featured-card p.desc { margin-bottom: 1.5rem !important; }
+      }
+    `}</style>
     <section
       id="featured-article"
       ref={sectionRef}
@@ -83,6 +92,7 @@ export default function FeaturedArticle() {
 
         {/* Right: Content card */}
         <div
+          id="featured-card"
           ref={cardRef}
           className="lg:w-[50%]"
           style={{ opacity: 0, paddingLeft: "clamp(1.5rem, 3vw, 4rem)", paddingRight: "clamp(1.5rem, 5vw, 6rem)" }}
@@ -99,7 +109,7 @@ export default function FeaturedArticle() {
             {data.headline}
           </h3>
           <p
-            className="leading-[1.8]"
+            className="leading-[1.8] desc"
             style={{ color: "#5a6a7a", marginBottom: "2vw" }}
           >
             {data.description}
@@ -117,5 +127,6 @@ export default function FeaturedArticle() {
         </div>
       </div>
     </section>
+    </>
   );
 }
