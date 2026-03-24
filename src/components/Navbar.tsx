@@ -39,11 +39,12 @@ export default function Navbar() {
       el.style.opacity = scrolled ? "0" : "1";
     });
 
-    // Recolor paths/ellipses inside #MARK (skip first child path)
+    // Recolor paths/ellipses inside #MARK (skip first child path and .gold elements)
     const mark = svg.getElementById("MARK");
     if (mark) {
       const els = Array.from(mark.querySelectorAll("path, ellipse"));
       els.slice(1).forEach((el) => {
+        if ((el as SVGElement).classList.contains("gold")) return;
         (el as SVGElement).style.transition = "fill 0.35s ease";
         (el as SVGElement).style.fill = scrolled ? "#0b375d" : "";
       });
@@ -98,6 +99,7 @@ export default function Navbar() {
               const mark = svg.getElementById("MARK");
               if (mark) {
                 Array.from(mark.querySelectorAll("path, ellipse")).slice(1).forEach((el) => {
+                  if ((el as SVGElement).classList.contains("gold")) return;
                   (el as SVGElement).style.transition = "fill 0.35s ease";
                 });
               }
