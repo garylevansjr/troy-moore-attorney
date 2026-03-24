@@ -229,6 +229,11 @@ body, p, a, span, li { font-size: clamp(0.85rem, 2.5vw, 1rem); line-height: 1.7;
   left: 100%;
 }
 
+/* Staying Informed label */
+a.info-row span {
+  flex: 2 !important;
+}
+
 /* Divider line */
 .divider-line {
   height: 1px;
