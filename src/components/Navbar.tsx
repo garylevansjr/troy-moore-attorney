@@ -106,14 +106,14 @@ export default function Navbar() {
         </Link>
 
         {/* Left links — desktop only */}
-        <div className="hidden lg:flex items-center gap-6" style={{ marginLeft: scrolled ? 120 : 160 }}>
+        <div className="hidden lg:flex items-center gap-6" style={{ marginLeft: scrolled ? 136 : 179 }}>
           <div className="flex items-center gap-5">
             {navData.leftLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="nav-link text-[13px] tracking-wide"
-                style={{ color: "var(--navy)" }}
+                className="nav-link tracking-wide"
+                style={{ color: "var(--navy)", fontSize: "19px" }}
               >
                 {link.label}
               </Link>
