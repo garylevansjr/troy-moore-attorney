@@ -100,7 +100,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
           {/* Right: Content */}
           <div
             className="lg:w-[52%] flex flex-col justify-start"
-            style={{ paddingBottom: "2vw", paddingTop: "2vw" }}
+            style={{ paddingBottom: "2vw", paddingTop: "2vw", paddingRight: "4vw" }}
           >
             {/* Eyebrow */}
             <p
