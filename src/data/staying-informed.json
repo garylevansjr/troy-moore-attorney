@@ -158,7 +158,32 @@
     "label": "PROBATE",
     "title": "Beneficiary Interpleader Litigation",
     "description": "We represent clients in disputes where multiple parties claim the same inheritance, ensuring a fair and legally sound resolution.",
-    "href": "/interpleader"
+    "href": "/interpleader",
+    "panel": {
+      "headline": "Life Insurance Attorney — Houston, Texas",
+      "sections": [
+        {
+          "heading": "When Multiple Parties Claim the Same Benefit",
+          "body": "Interpleader litigation arises when an insurance company, financial institution, or estate is caught between two or more competing claimants to the same funds — such as a life insurance policy, annuity, or retirement account. Rather than risk paying the wrong party, the holder deposits the funds with the court and lets the claimants fight it out. We represent beneficiaries in these disputes and fight to ensure the right person receives what they are owed."
+        },
+        {
+          "heading": "Common Interpleader Scenarios",
+          "body": "Beneficiary disputes are more common than most people realize, and they can arise from a number of situations:",
+          "list": [
+            "Conflicting beneficiary designations on a life insurance policy",
+            "Former spouse versus current spouse or children of a prior marriage",
+            "Changes to a beneficiary designation that are disputed as invalid",
+            "Competing claims between named beneficiaries and estate heirs",
+            "Life insurance proceeds contested by creditors or other claimants"
+          ]
+        },
+        {
+          "heading": "Protect Your Right to Recover",
+          "body": "If you're searching for a lawyer to contest a will near me or a skilled litigator for fiduciary breach, contact us today. We offer honest assessments, aggressive representation, and a commitment to protecting what your loved one intended.",
+          "closing": "Call us today for a free consultation. Our office serves clients throughout Harris County, Fort Bend, Montgomery, and the greater Houston area."
+        }
+      ]
+    }
   },
   {
     "label": "ESTATE PLANNING",
