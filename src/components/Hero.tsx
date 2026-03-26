@@ -120,7 +120,7 @@ function TestimonialCarousel() {
       </div>
 
       {/* Accent quote — glyph sits in upper ~20% of em-square, so offset bottom to pull it down near footer */}
-      <div aria-hidden="true" style={{ position: "absolute", bottom: "calc(4.5rem - 19vw)", right: "3vw", lineHeight: 1, fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "clamp(15rem, 25vw, 27.5rem)", color: "#098afc", opacity: 0.21, userSelect: "none", pointerEvents: "none" }}>
+      <div aria-hidden="true" style={{ position: "absolute", bottom: "calc(4.5rem - 19vw + 65px)", right: "3vw", lineHeight: 1, fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "clamp(15rem, 25vw, 27.5rem)", color: "#098afc", opacity: 0.21, userSelect: "none", pointerEvents: "none" }}>
         &rdquo;
       </div>
 
