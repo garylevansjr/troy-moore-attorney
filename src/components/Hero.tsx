@@ -90,6 +90,8 @@ function TestimonialCarousel() {
       flexDirection: "column",
       justifyContent: "space-between",
       boxSizing: "border-box",
+      position: "relative",
+      overflow: "hidden",
     }}>
       {/* Stars + quote */}
       <div ref={quoteRef} style={{ flex: 1 }}>
@@ -101,8 +103,9 @@ function TestimonialCarousel() {
             </svg>
           ))}
         </div>
-        <div style={{ fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "clamp(3rem, 5vw, 5.5rem)", lineHeight: 1, color: "var(--gold)", opacity: 0.5, marginBottom: "1rem", userSelect: "none" }}>
-          &ldquo;
+        {/* Decorative accent quote — lower right, large, faint */}
+        <div aria-hidden="true" style={{ position: "absolute", bottom: "-4rem", right: "-1rem", fontFamily: "var(--font-heading)", fontStyle: "italic", fontSize: "clamp(15rem, 25vw, 27.5rem)", lineHeight: 1, color: "#ffffff", opacity: 0.21, userSelect: "none", pointerEvents: "none" }}>
+          &rdquo;
         </div>
         <blockquote style={{
           fontFamily: "var(--font-heading)",
