@@ -279,7 +279,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
       </section>
 
       {/* ── Stats + Testimonials ──────────────────────────────────────── */}
-      <div ref={statsBarRef} style={{ width: "100%", background: "var(--navy)", paddingTop: "5vw", paddingBottom: "5vw" }}>
+      <div ref={statsBarRef} style={{ width: "100%", backgroundImage: "url(/assets/blue-bg2.png)", backgroundSize: "cover", backgroundPosition: "center", paddingTop: "5vw", paddingBottom: "5vw" }}>
         <div style={{ maxWidth: 1600, margin: "0 auto", paddingLeft: "5vw", paddingRight: "5vw" }}>
 
           {/* Section eyebrow */}
