@@ -66,7 +66,7 @@ p, a, span, li, label, input, textarea, button {
 
 /* ─── Mobile typography (default / screens ≤ 1000px) ─── */
 h1 { font-size: clamp(2rem, 8vw, 3rem); line-height: 1.15; }
-h2 { font-size: clamp(1.75rem, 7vw, 2.5rem); line-height: 1.1; }
+h2 { font-size: clamp(1.225rem, 4.9vw, 1.75rem); line-height: 1.1; }
 h3 { font-size: clamp(1.25rem, 5vw, 1.75rem); line-height: 1.2; }
 .eyebrow { font-size: clamp(0.6rem, 2.5vw, 0.8rem); letter-spacing: 0.25em; }
 body, p, a, span, li { font-size: clamp(0.85rem, 2.5vw, 1rem); line-height: 1.7; }
@@ -74,7 +74,7 @@ body, p, a, span, li { font-size: clamp(0.85rem, 2.5vw, 1rem); line-height: 1.7;
 /* ─── vw-based typography for screens > 1000px ─── */
 @media (min-width: 1001px) {
   h1 { font-size: 3vw; line-height: 1.1; }
-  h2 { font-size: 4vw; line-height: 1.05; }
+  h2 { font-size: 2.8vw; line-height: 1.05; }
   h3 { font-size: 2vw; line-height: 1.15; }
   .eyebrow { font-size: 1vw; letter-spacing: 0.3em; }
   body { font-size: 0.8vw; }
@@ -134,7 +134,7 @@ body, p, a, span, li { font-size: clamp(0.85rem, 2.5vw, 1rem); line-height: 1.7;
   color: var(--gold) !important;
 }
 
-/* CTA Button */
+/* CTA Button — navy, light backgrounds */
 .btn-cta {
   display: inline-flex;
   align-items: center;
@@ -154,13 +154,36 @@ body, p, a, span, li { font-size: clamp(0.85rem, 2.5vw, 1rem); line-height: 1.7;
   background-color: #0d4a7a;
   box-shadow: 0 8px 28px rgba(11, 55, 93, 0.3);
   transform: scale(1.03);
-}
-
-.btn-cta:hover {
   color: #fff;
 }
 
-.btn-cta .cta-circle {
+/* CTA Button Ghost — white outline, dark backgrounds */
+.btn-cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.55em 0.55em 0.55em 1.4em;
+  border-radius: 9999px;
+  background-color: transparent;
+  color: #fff;
+  font-weight: 400;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-cta-ghost:hover {
+  background-color: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+  transform: scale(1.03);
+  color: #fff;
+}
+
+/* Shared circle for both variants */
+.btn-cta .cta-circle,
+.btn-cta-ghost .cta-circle {
   width: 2.2em;
   height: 2.2em;
   border-radius: 50%;
@@ -175,13 +198,14 @@ body, p, a, span, li { font-size: clamp(0.85rem, 2.5vw, 1rem); line-height: 1.7;
   color: rgba(255,255,255,0.6);
 }
 
-.btn-cta:hover .cta-circle {
-  background: transparent;
+.btn-cta:hover .cta-circle,
+.btn-cta-ghost:hover .cta-circle {
   color: var(--gold);
 }
 
 /* Circle SVG stroke animation */
-.btn-cta .cta-circle svg .CircleIcon_circle__vewPw {
+.btn-cta .cta-circle svg .CircleIcon_circle__vewPw,
+.btn-cta-ghost .cta-circle svg .CircleIcon_circle__vewPw {
   stroke: rgba(255,255,255,0.3);
   stroke-width: 1.5;
   fill: none;
@@ -190,7 +214,8 @@ body, p, a, span, li { font-size: clamp(0.85rem, 2.5vw, 1rem); line-height: 1.7;
   transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
 }
 
-.btn-cta .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
+.btn-cta .cta-circle svg .CircleIcon_circle-overlay__lg7sz,
+.btn-cta-ghost .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
   stroke: var(--gold);
   stroke-width: 1.5;
   fill: none;
@@ -199,12 +224,15 @@ body, p, a, span, li { font-size: clamp(0.85rem, 2.5vw, 1rem); line-height: 1.7;
   transition: stroke-dashoffset 0.5s ease;
 }
 
-.btn-cta:hover .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
+.btn-cta:hover .cta-circle svg .CircleIcon_circle-overlay__lg7sz,
+.btn-cta-ghost:hover .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
   stroke-dashoffset: 0;
 }
 
-.btn-cta .cta-circle svg .CircleIcon_icon__n80xg {
+.btn-cta .cta-circle svg .CircleIcon_icon__n80xg,
+.btn-cta-ghost .cta-circle svg .CircleIcon_icon__n80xg {
   stroke: currentColor;
+  fill: none;
   transition: stroke 0.3s ease;
 }
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import TransitionLink from "./TransitionLink";
 import { gsap } from "@/lib/gsap";
 import data from "@/data/featured-article.json";
 
@@ -119,7 +119,7 @@ export default function FeaturedArticle() {
           >
             {data.description}
           </p>
-          <Link href={data.buttonHref} className="btn-cta">
+          <TransitionLink href={data.buttonHref} className="btn-cta">
             {data.buttonText}
             <span className="cta-circle">
               <svg viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "1.625em", height: "1.625em" }}>
@@ -128,7 +128,7 @@ export default function FeaturedArticle() {
                 <path className="CircleIcon_icon__n80xg" d="M12.5 11L16 14.5L12.5 18" stroke="currentColor" strokeLinecap="round" />
               </svg>
             </span>
-          </Link>
+          </TransitionLink>
         </div>
       </div>
     </section>

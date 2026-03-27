@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import { gsap } from "@/lib/gsap";
-import Loader from "@/components/Loader";
+import { usePageTransition } from "@/context/TransitionContext";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LatestCarousel from "@/components/LatestCarousel";
@@ -13,7 +13,7 @@ import FixedCTA from "@/components/FixedCTA";
 import SidePanel, { type PanelItem } from "@/components/SidePanel";
 
 export default function Home() {
-  const [loaderDone, setLoaderDone] = useState(false);
+  const { loaderDone } = usePageTransition();
   const [panelItem, setPanelItem] = useState<PanelItem | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -55,8 +55,6 @@ export default function Home() {
 
   return (
     <>
-      <Loader onComplete={() => setLoaderDone(true)} />
-
       {/* Main content — slides left when panel opens */}
       <div
         ref={contentRef}

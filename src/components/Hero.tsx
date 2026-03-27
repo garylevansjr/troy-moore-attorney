@@ -300,7 +300,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
           <div className="stats-columns" style={{ display: "flex", gap: "5vw", alignItems: "stretch" }}>
 
             {/* Left: Stats */}
-            <div className="stats-left" style={{ flex: "0 0 42%" }}>
+            <div className="stats-left" style={{ flex: "0 0 55%" }}>
               {STATS.map((stat) => (
                 <StatCounter key={stat.label} {...stat} />
               ))}

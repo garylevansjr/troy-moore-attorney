@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import TransitionManager from "@/components/TransitionManager";
 
 export const metadata: Metadata = {
   title: "Troy M. Moore | Probate, Estate Planning & Trusts Attorney",
@@ -20,7 +21,9 @@ export default function RootLayout({
           href="https://use.typekit.net/rje6zmg.css"
         />
       </head>
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <TransitionManager>{children}</TransitionManager>
+      </body>
     </html>
   );
 }

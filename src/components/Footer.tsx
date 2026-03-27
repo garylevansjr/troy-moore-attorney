@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import TransitionLink from "./TransitionLink";
 import { gsap } from "@/lib/gsap";
 import LetterAnimation from "./LetterAnimation";
 import footerData from "@/data/footer.json";
@@ -71,7 +71,7 @@ export default function Footer() {
           style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
         >
           {footerData.upperLinks.map((link, i) => (
-            <Link
+            <TransitionLink
               key={i}
               href={link.href}
               className="footer-upper-link group flex-1 flex items-center justify-center"
@@ -83,7 +83,7 @@ export default function Footer() {
               <h2 className="text-white transition-colors duration-300 group-hover:text-[var(--gold)] text-center" style={{ fontSize: "clamp(2.2rem, 3vw, 5rem)" }}>
                 {link.label}
               </h2>
-            </Link>
+            </TransitionLink>
           ))}
         </div>
       </div>
@@ -123,14 +123,14 @@ export default function Footer() {
             <div className="lg:w-[22%] flex flex-col gap-2">
               <p className="eyebrow text-white/40 mb-2">Quick Links</p>
               {footerData.quickLinks.map((link, i) => (
-                <Link
+                <TransitionLink
                   key={i}
                   href={link.href}
                   className="text-white/60 hover:text-[var(--gold)] transition-colors"
                   style={{ fontSize: "clamp(0.75rem, 0.75vw, 1rem)" }}
                 >
                   {link.label}
-                </Link>
+                </TransitionLink>
               ))}
             </div>
 
@@ -185,12 +185,12 @@ export default function Footer() {
             © {new Date().getFullYear()} Law Office of Troy M. Moore. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
-            <Link href="/privacy-policy" style={{ fontSize: "0.72rem", color: "var(--navy)", opacity: 0.5, transition: "opacity 0.2s" }} className="hover:opacity-100">
+            <TransitionLink href="/privacy-policy" style={{ fontSize: "0.72rem", color: "var(--navy)", opacity: 0.5, transition: "opacity 0.2s" }} className="hover:opacity-100">
               Privacy Policy
-            </Link>
-            <Link href="/terms-and-conditions" style={{ fontSize: "0.72rem", color: "var(--navy)", opacity: 0.5, transition: "opacity 0.2s" }} className="hover:opacity-100">
+            </TransitionLink>
+            <TransitionLink href="/terms-and-conditions" style={{ fontSize: "0.72rem", color: "var(--navy)", opacity: 0.5, transition: "opacity 0.2s" }} className="hover:opacity-100">
               Terms &amp; Conditions
-            </Link>
+            </TransitionLink>
           </div>
         </div>
       </div>

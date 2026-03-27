@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import navData from "@/data/navigation.json";
+import { usePageTransition } from "@/context/TransitionContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -11,6 +12,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const lastScrollY = useRef(0);
   const logoRef = useRef<HTMLObjectElement>(null);
+  const { navigate } = usePageTransition();
 
   useEffect(() => {
     const onScroll = () => {
@@ -79,11 +81,13 @@ export default function Navbar() {
           id="navbar-logo"
           href="/"
           className="flex-shrink-0"
+          onClick={(e) => { e.preventDefault(); navigate("/"); }}
           style={{
             position: "absolute",
             top: scrolled ? -3 : 0,
             left: "3vw",
             transition: "all 0.35s ease",
+            display: "block",
           }}
         >
           <object
@@ -114,8 +118,11 @@ export default function Navbar() {
               transition: "height 0.35s ease",
               filter: "drop-shadow(0 4px 8px rgba(11,55,93,0.1))",
               pointerEvents: "none",
+              display: "block",
             }}
           />
+          {/* Transparent overlay — captures clicks that <object> would otherwise absorb */}
+          <div aria-hidden style={{ position: "absolute", inset: 0 }} />
         </Link>
 
         {/* Left links — desktop only */}
@@ -125,6 +132,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(e) => { e.preventDefault(); navigate(link.href); }}
                 className="nav-link tracking-wide"
                 style={{ color: "var(--navy)", fontSize: "19px" }}
               >
@@ -140,6 +148,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => { e.preventDefault(); navigate(link.href); }}
               className="nav-link text-[13px] tracking-wide"
               style={{ color: "var(--navy)" }}
             >
@@ -217,7 +226,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => { e.preventDefault(); setMobileOpen(false); navigate(link.href); }}
                     style={{
                       fontFamily: '"kepler-std", serif',
                       fontWeight: 300,
@@ -250,7 +259,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={(e) => { e.preventDefault(); setMobileOpen(false); navigate(link.href); }}
                       style={{
                         fontFamily: '"avenir-lt-pro", sans-serif',
                         fontWeight: 400,
