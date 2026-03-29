@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
+import type { ReactNode } from "react";
 
 export interface PanelSection {
   heading: string;
@@ -12,6 +13,7 @@ export interface PanelSection {
 export interface PanelContent {
   headline: string;
   sections: PanelSection[];
+  tree?: ReactNode;
 }
 
 export interface PanelItem {
@@ -88,6 +90,9 @@ const SidePanel = forwardRef<HTMLDivElement, Props>(({ item, onClose }, ref) => 
 
           {/* Divider */}
           <div style={{ width: 48, height: 2, backgroundColor: "var(--gold)", marginBottom: "clamp(2.5rem, 4vw, 4rem)", opacity: 0.7 }} />
+
+          {/* Decision tree */}
+          {item.panel.tree}
 
           {/* Sections */}
           {item.panel.sections.map((section, i) => (
