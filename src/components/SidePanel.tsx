@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
-import type { ReactNode } from "react";
+import ProbateDecisionTree, { type TreeHighlight } from "./ProbateDecisionTree";
 
 export interface PanelSection {
   heading: string;
@@ -13,7 +13,7 @@ export interface PanelSection {
 export interface PanelContent {
   headline: string;
   sections: PanelSection[];
-  tree?: ReactNode;
+  treeHighlight?: string;
 }
 
 export interface PanelItem {
@@ -92,7 +92,9 @@ const SidePanel = forwardRef<HTMLDivElement, Props>(({ item, onClose }, ref) => 
           <div style={{ width: 48, height: 2, backgroundColor: "var(--gold)", marginBottom: "clamp(2.5rem, 4vw, 4rem)", opacity: 0.7 }} />
 
           {/* Decision tree */}
-          {item.panel.tree}
+          {item.panel.treeHighlight && (
+            <ProbateDecisionTree highlight={item.panel.treeHighlight as TreeHighlight} />
+          )}
 
           {/* Sections */}
           {item.panel.sections.map((section, i) => (
