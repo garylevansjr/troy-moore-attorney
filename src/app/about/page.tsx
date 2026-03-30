@@ -533,17 +533,17 @@ export default function AboutPage() {
 
           {/* ── 5. FINAL CTA ─────────────────────────────────────── */}
           <section style={{ background: "var(--navy)", ...PAD }}>
-            <div style={{ ...WRAP, textAlign: "center", maxWidth: "60ch", margin: "0 auto" }}>
-              <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "clamp(0.3rem, 0.5vw, 0.5rem)" }}>
-                Ready to Get Started
-              </p>
-              <h2 style={{ color: "#ffffff", marginBottom: "clamp(1rem, 1.5vw, 1.5rem)" }}>
-                Experience the difference of a firm that puts clients first.
-              </h2>
-              <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "clamp(2rem, 3vw, 3rem)" }}>
-                With over 25 years of Texas probate and estate planning experience, the Law Office of Troy M. Moore, PLLC is ready to guide your family through whatever comes next. Contact us today for a consultation.
-              </p>
-              <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+            <div style={WRAP}>
+              <div style={{ maxWidth: "58ch" }}>
+                <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "clamp(0.3rem, 0.5vw, 0.5rem)" }}>
+                  Ready to Get Started
+                </p>
+                <h2 style={{ color: "#ffffff", marginBottom: "clamp(1rem, 1.5vw, 1.5rem)" }}>
+                  Experience the difference of a firm that puts clients first.
+                </h2>
+                <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: "clamp(2rem, 3vw, 3rem)" }}>
+                  With over 25 years of Texas probate and estate planning experience, the Law Office of Troy M. Moore, PLLC is ready to guide your family through whatever comes next. Contact us today for a consultation.
+                </p>
                 <a href="tel:2816090303" className="btn-cta-ghost" style={{ textDecoration: "none" }}>
                   Call (281) 609-0303 <CircleSVG />
                 </a>
