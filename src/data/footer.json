@@ -1,7 +1,7 @@
 {
   "upperLinks": [
     { "label": "Protect Your Legacy", "href": "/locations" },
-    { "label": "Meet Our Team", "href": "/people" }
+    { "label": "Meet Our Team", "href": "/about" }
   ],
   "socialLinks": [
     { "label": "LinkedIn", "href": "https://linkedin.com", "icon": "linkedin" },
