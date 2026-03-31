@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FixedCTA from "@/components/FixedCTA";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | Law Office of Troy M. Moore",
@@ -78,6 +79,7 @@ export default function TermsAndConditions() {
         </div>
       </main>
       <Footer />
+      <FixedCTA show={true} />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FixedCTA from "@/components/FixedCTA";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Law Office of Troy M. Moore",
@@ -97,6 +98,7 @@ export default function PrivacyPolicy() {
         </div>
       </main>
       <Footer />
+      <FixedCTA show={true} />
     </>
   );
 }
