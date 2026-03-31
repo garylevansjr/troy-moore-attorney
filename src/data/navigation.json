@@ -5,6 +5,7 @@
   ],
   "rightLinks": [
     { "label": "About", "href": "/about" },
+    { "label": "Practices", "href": "/practices" },
     { "label": "Blog", "href": "/blog" },
     { "label": "Videos", "href": "/videos" },
     { "label": "Contact Us", "href": "/contact" }
