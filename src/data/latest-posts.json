@@ -25,7 +25,7 @@
     "description": "Shield your assets from costly litigation, unnecessary antiquated probate court procedures, and family disputes with strategic legal planning designed to preserve family wealth.",
     "category": "ASSET PROTECTION",
     "image": "/assets/s3.png",
-    "href": "/asset-protection",
+    "href": "/practices/probate-avoidance-package",
     "overlayColor": "#6B3A5E",
     "overlayTextColor": "#ffffff"
   },
@@ -35,7 +35,7 @@
     "description": "Protect your inheritance rights by contesting wills affected by undue influence, fraud, forgery, or lack of mental capacity, with experienced representation focused on honoring your loved one's true intentions.",
     "category": "WILL CONTESTS",
     "image": "/assets/s4.png",
-    "href": "/will-contests",
+    "href": "/practices/houston-contested-will-attorney",
     "overlayColor": "#D4D95E",
     "overlayTextColor": "#0b375d"
   },
@@ -45,7 +45,7 @@
     "description": "Take swift action against trustee misconduct, misused assets, and fraudulent property transfers with strategic legal support designed to protect beneficiaries and restore rightful ownership.",
     "category": "TRUST DISPUTES",
     "image": "/assets/s5.png",
-    "href": "/trust-disputes",
+    "href": "/practices/houston-trust-attorney",
     "overlayColor": "#6B3A5E",
     "overlayTextColor": "#ffffff"
   }
