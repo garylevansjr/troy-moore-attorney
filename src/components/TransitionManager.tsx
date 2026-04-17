@@ -94,7 +94,7 @@ export default function TransitionManager({ children }: { children: React.ReactN
     if (!prevPath.current || prevPath.current === pathname) return;
     prevPath.current = pathname;
 
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "instant" });
 
     const page    = pageRef.current;
     const overlay = overlayRef.current;
