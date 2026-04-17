@@ -1,10 +1,30 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import TransitionLink from "./TransitionLink";
 import { gsap } from "@/lib/gsap";
 import LetterAnimation from "./LetterAnimation";
 import footerData from "@/data/footer.json";
+import { getFooterNav } from "@/lib/footerNav";
+
+function ArrowLeft() {
+  return (
+    <svg width="36" height="10" viewBox="0 0 36 10" fill="none" aria-hidden>
+      <line x1="35" y1="5" x2="1" y2="5" stroke="currentColor" strokeWidth="0.75"/>
+      <polyline points="6,1 1,5 6,9" stroke="currentColor" strokeWidth="0.75" fill="none" strokeLinejoin="round" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function ArrowRight() {
+  return (
+    <svg width="36" height="10" viewBox="0 0 36 10" fill="none" aria-hidden>
+      <line x1="1" y1="5" x2="35" y2="5" stroke="currentColor" strokeWidth="0.75"/>
+      <polyline points="30,1 35,5 30,9" stroke="currentColor" strokeWidth="0.75" fill="none" strokeLinejoin="round" strokeLinecap="round"/>
+    </svg>
+  );
+}
 
 const socialIcons: Record<string, React.ReactNode> = {
   facebook: (
@@ -21,6 +41,8 @@ const socialIcons: Record<string, React.ReactNode> = {
 
 export default function Footer() {
   const iconsRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const { prev, next } = getFooterNav(pathname);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -44,37 +66,83 @@ export default function Footer() {
 
   return (
     <footer>
-      {/* Upper Footer — Locations / People */}
-      <div style={{ backgroundColor: "var(--navy)", paddingTop: "5vw", paddingBottom: "5vw" }}>
+      {/* Upper Footer — Prev / Next navigation */}
+      <div style={{ backgroundColor: "var(--navy)" }}>
         <style>{`
-          @media (max-width: 767px) {
-            .footer-upper { padding-left: 1.5rem !important; padding-right: 1.5rem !important; gap: 1rem; }
-            .footer-upper-link {
-              border: 1px solid rgba(255,255,255,0.25) !important;
-              border-right: 1px solid rgba(255,255,255,0.25) !important;
-              padding: 2rem 1.5rem !important;
-            }
+          .footer-nav-panel {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: clamp(2.5rem, 4vw, 4.5rem) clamp(2rem, 5vw, 6rem);
+            text-decoration: none;
+            transition: background 0.3s ease;
+            min-width: 0;
+          }
+          .footer-nav-panel:hover { background: rgba(255,255,255,0.04); }
+          .footer-nav-panel:hover .footer-nav-arrow { color: var(--gold); }
+          .footer-nav-panel:hover .footer-nav-label { color: var(--gold); }
+          .footer-nav-arrow {
+            color: rgba(255,255,255,0.3);
+            flex-shrink: 0;
+            transition: color 0.3s ease, transform 0.3s ease;
+          }
+          .footer-nav-panel.prev:hover .footer-nav-arrow { transform: translateX(-4px); }
+          .footer-nav-panel.next:hover .footer-nav-arrow { transform: translateX(4px); }
+          .footer-nav-eyebrow {
+            font-family: var(--font-eyebrow);
+            font-size: clamp(0.55rem, 0.6vw, 0.65rem);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 0.4rem;
+          }
+          .footer-nav-label {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(1.4rem, 2vw, 2.6rem);
+            color: #ffffff;
+            line-height: 1.15;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+          }
+          .footer-nav-desc {
+            font-size: clamp(0.72rem, 0.78vw, 0.85rem);
+            color: rgba(255,255,255,0.4);
+            margin-top: 0.35rem;
+            line-height: 1.5;
+            white-space: nowrap;
+          }
+          @media (max-width: 600px) {
+            .footer-nav-label { white-space: normal; font-size: clamp(1.2rem, 5vw, 1.8rem); }
+            .footer-nav-desc  { white-space: normal; }
           }
         `}</style>
-        <div
-          className="footer-upper flex flex-col md:flex-row items-stretch"
-          style={{ paddingLeft: "5vw", paddingRight: "5vw" }}
-        >
-          {footerData.upperLinks.map((link, i) => (
-            <TransitionLink
-              key={i}
-              href={link.href}
-              className="footer-upper-link group flex-1 flex items-center justify-center"
-              style={{
-                borderRight: i < footerData.upperLinks.length - 1 ? "1px solid rgba(255,255,255,0.12)" : "none",
-                padding: "clamp(1.5rem, 2vw, 3rem) clamp(1rem, 4vw, 5rem)",
-              }}
-            >
-              <h2 className="text-white transition-colors duration-300 group-hover:text-[var(--gold)] text-center" style={{ fontSize: "clamp(2.2rem, 3vw, 5rem)" }}>
-                {link.label}
-              </h2>
-            </TransitionLink>
-          ))}
+        <div style={{ display: "flex", flexDirection: "row" }}>
+
+          {/* Prev */}
+          <TransitionLink href={prev.href} className="footer-nav-panel prev" style={{ gap: "clamp(1rem, 2vw, 1.75rem)" }}>
+            <span className="footer-nav-arrow"><ArrowLeft /></span>
+            <div style={{ minWidth: 0 }}>
+              <p className="footer-nav-eyebrow">Previous</p>
+              <p className="footer-nav-label">{prev.label}</p>
+              <p className="footer-nav-desc">{prev.description}</p>
+            </div>
+          </TransitionLink>
+
+          {/* Divider */}
+          <div style={{ width: 1, background: "rgba(255,255,255,0.1)", flexShrink: 0, margin: "clamp(1.5rem, 3vw, 3rem) 0" }} />
+
+          {/* Next */}
+          <TransitionLink href={next.href} className="footer-nav-panel next" style={{ justifyContent: "flex-end", gap: "clamp(1rem, 2vw, 1.75rem)" }}>
+            <div style={{ minWidth: 0, textAlign: "right" }}>
+              <p className="footer-nav-eyebrow">Next</p>
+              <p className="footer-nav-label">{next.label}</p>
+              <p className="footer-nav-desc">{next.description}</p>
+            </div>
+            <span className="footer-nav-arrow"><ArrowRight /></span>
+          </TransitionLink>
+
         </div>
       </div>
 
