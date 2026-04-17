@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import TransitionManager from "@/components/TransitionManager";
 import FixedCTA from "@/components/FixedCTA";
+import JsonLd from "@/components/JsonLd";
+import { orgSchema, websiteSchema } from "@/lib/schemas";
 
 export const metadata: Metadata = {
   title: "Troy M. Moore | Probate, Estate Planning & Trusts Attorney",
@@ -17,10 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          rel="stylesheet"
-          href="https://use.typekit.net/rje6zmg.css"
-        />
+        <link rel="stylesheet" href="https://use.typekit.net/rje6zmg.css" />
+        <JsonLd data={[orgSchema(), websiteSchema()]} />
       </head>
       <body className="min-h-screen">
         <TransitionManager>{children}</TransitionManager>

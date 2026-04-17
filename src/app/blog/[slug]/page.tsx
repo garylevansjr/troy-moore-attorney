@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FAQPreview from "@/components/FAQPreview";
 import PageCTA from "@/components/PageCTA";
+import JsonLd from "@/components/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@/lib/schemas";
 
 export const revalidate = 3600;
 
@@ -121,6 +123,18 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <JsonLd data={articleSchema({
+        title: post.title.rendered,
+        date: post.date,
+        excerpt: post.excerpt.rendered,
+        slug: post.slug,
+        imageUrl: img?.source_url,
+      })} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Blog", url: "/blog" },
+        { name: post.title.rendered, url: `/blog/${post.slug}` },
+      ])} />
       <style>{`
         /* ── Hero overlay ── */
         .blog-hero-overlay {

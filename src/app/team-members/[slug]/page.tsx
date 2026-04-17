@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import FAQPreview from "@/components/FAQPreview";
 import PageCTA from "@/components/PageCTA";
 import teamData from "@/data/team.json";
+import JsonLd from "@/components/JsonLd";
+import { personSchema, breadcrumbSchema } from "@/lib/schemas";
 
 const WRAP: React.CSSProperties = {
   paddingLeft: "10vw",
@@ -40,6 +42,18 @@ export default async function TeamMemberPage({
 
   return (
     <>
+      <JsonLd data={personSchema({
+        name: member.name,
+        role: member.role,
+        slug: member.slug,
+        bio: member.bio,
+        photo: member.photo,
+      })} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Our Team", url: "/team-members" },
+        { name: member.name, url: `/team-members/${member.slug}` },
+      ])} />
       <style>{`
         .profile-grid {
           display: grid;

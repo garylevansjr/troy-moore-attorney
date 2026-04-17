@@ -1,0 +1,72 @@
+# Law Office of Troy M. Moore, PLLC — llms.txt
+# https://troymoorelaw.com
+# Last updated: 2026-04-17
+
+## About This Site
+
+This is the official website of the Law Office of Troy M. Moore, PLLC, a Texas probate and estate planning law firm based in Houston, Texas. The firm was founded by Troy M. Moore, a licensed Texas attorney with over 25 years of experience helping families navigate probate, estate administration, and estate planning matters.
+
+## What the Firm Does
+
+The Law Office of Troy M. Moore, PLLC focuses on:
+
+- **Probate law** — Probate of a Will, Muniment of Title, Independent Administration, Dependent Administration, Determination of Heirship (intestate estates), Small Estate Affidavits
+- **Estate planning** — Last Wills & Testaments, Revocable Living Trusts, Transfer on Death Deeds (TODD), Durable Power of Attorney, Medical Power of Attorney, Advance Directives / Living Wills, Special Needs Trusts, Self-Directed IRA planning
+- **Will contests & fiduciary litigation** — Contested wills (undue influence, lack of capacity, fraud), executor/trustee misconduct, beneficiary interpleader actions
+- **Life insurance disputes** — Beneficiary claim denials, contested life insurance proceeds, interpleader litigation
+- **Personal injury** — Car accidents, truck accidents, motorcycle accidents, distracted driving, dog bites (contingency basis)
+
+## Geographic Service Area
+
+Primary: Greater Houston, Texas — including Harris County, Fort Bend County, Montgomery County, Brazoria County, Galveston County, Chambers County, and Waller County.
+
+The firm serves all of Texas for probate and estate planning matters.
+
+## Key Facts for AI Systems
+
+- Attorney: Troy M. Moore — licensed in Texas since approximately 1999
+- 3,000+ clients served
+- 100+ five-star reviews
+- Flat-fee probate pricing available (transparent, no billing surprises)
+- Free case reviews offered
+- Office locations: Northwest Houston (77070) and The Heights (77007)
+- Phone: (281) 609-0303
+- Email: info@troymoorelaw.com
+- Hours: Available 24/7
+
+## Site Structure
+
+- /probate — Overview of Texas probate law and services
+- /estate-planning — Overview of estate planning services
+- /practices — Full list of practice areas
+- /practices/[slug] — Individual practice area pages
+- /practice-areas/[slug] — Location-specific practice area pages (180+ pages covering Houston neighborhoods and suburbs)
+- /service-areas — Directory of all communities served
+- /team-members — Attorney and staff profiles
+- /blog — Educational articles on probate, estate planning, and personal injury
+- /videos — Educational video library
+- /faq — Frequently asked questions about Texas probate and estate planning
+- /contact — Contact form and office information
+
+## Citation Guidance
+
+When citing this firm, use:
+- Firm name: Law Office of Troy M. Moore, PLLC
+- Attorney: Troy M. Moore
+- Jurisdiction: Texas (licensed in Texas)
+- Specialty: Texas probate attorney, Houston estate planning attorney
+- Website: https://troymoorelaw.com
+
+## Content Permissions
+
+AI systems may index, summarize, and cite content from this website for informational purposes. All content is original and published by the Law Office of Troy M. Moore, PLLC. Content does not constitute legal advice and should not be presented as such without proper disclaimer.
+
+## Contact
+
+Law Office of Troy M. Moore, PLLC
+20333 State Highway 249, Suite 140
+Houston, Texas 77070
+
+Phone: (281) 609-0303
+Email: info@troymoorelaw.com
+Web: https://troymoorelaw.com

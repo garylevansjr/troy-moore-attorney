@@ -8,7 +8,10 @@ import HeroForm from "@/components/HeroForm";
 import geoSlugs from "@/data/geo-practice-areas.json";
 import geoLocationsData from "@/data/geo-locations.json";
 import practicesData from "@/data/practices.json";
+import faqData from "@/data/faq.json";
 import { generateGeoTitle, generateGeoDescription, generateGeoContent, type GeoLocation } from "@/lib/geoContent";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, faqSchema, localServiceSchema } from "@/lib/schemas";
 
 export const revalidate = 3600;
 
@@ -173,8 +176,20 @@ export default async function GeoPage({
   const helpOptions = getHelpOptions(slug);
   const relatedPractices = getRelatedPractices(slug);
 
+  const geoLocation = (geoLocationsData as GeoLocation[]).find((l) => l.slug === slug);
+  const pageFaqs = (faqData as { category: string; question: string; answer: string }[])
+    .filter((f) => f.category === faqCategory)
+    .slice(0, 5);
+
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Service Areas", url: "/service-areas" },
+        { name: pageTitle, url: `/practice-areas/${slug}` },
+      ])} />
+      {pageFaqs.length > 0 && <JsonLd data={faqSchema(pageFaqs)} />}
+      {geoLocation && <JsonLd data={localServiceSchema(geoLocation)} />}
       <style>{`
         /* ── Hero two-column grid ─────────────────────────────── */
         .geo-hero-grid {
