@@ -127,6 +127,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
     } else {
       const script = document.createElement("script");
       script.src = "https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js";
+      script.async = true;
       script.onload = () => loadData().then(init);
       document.head.appendChild(script);
     }
@@ -152,8 +153,8 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
       <section id="hero" className="relative" style={{ backgroundColor: "#f9f9f9" }}>
         <div id="hero-inner" className="mx-auto flex flex-col lg:flex-row items-stretch" style={{ paddingLeft: "5vw", paddingRight: "5vw", minWidth: 0 }}>
           {/* Left: Hero Image */}
-          <div id="hero-img-wrap" ref={imageRef} className="lg:w-[48%] relative flex items-end justify-center" style={{ opacity: 0, paddingLeft: "2vw", paddingRight: "2vw" }}>
-            <Image src={heroData.heroImage} alt="Troy M. Moore" width={540} height={720} className="w-full h-auto object-cover object-top" priority />
+          <div id="hero-img-wrap" ref={imageRef} className="lg:w-[48%] relative flex items-end justify-center" style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
+            <Image src={heroData.heroImage} alt="Troy M. Moore" width={540} height={720} className="w-full h-auto object-cover object-top" priority sizes="(max-width: 1023px) 100vw, 48vw" />
           </div>
 
           {/* Blue bar — mobile only */}
@@ -161,7 +162,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
 
           {/* Right: Content */}
           <div id="hero-text" className="lg:w-[52%] flex flex-col justify-start" style={{ paddingBottom: "2vw", paddingTop: "2vw", paddingRight: "4vw" }}>
-            <p ref={eyebrowRef} className="eyebrow font-medium" style={{ color: "var(--gold)", opacity: 0, marginBottom: "clamp(1rem, 1vw, 2rem)" }}>{heroData.eyebrow}</p>
+            <p ref={eyebrowRef} className="eyebrow font-medium" style={{ color: "var(--gold)", marginBottom: "clamp(1rem, 1vw, 2rem)" }}>{heroData.eyebrow}</p>
             <h1 style={{ marginBottom: "clamp(1rem, 1vw, 2rem)" }}>{heroData.headline}</h1>
             <ScrollReveal>
               <p style={{ color: "#5a6a7a", marginBottom: "clamp(1rem, 1vw, 2rem)" }}>{heroData.paragraph}</p>

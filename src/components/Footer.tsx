@@ -156,6 +156,8 @@ export default function Footer() {
               <img
                 src="/assets/icon-white.svg"
                 alt="Law Office of Troy M. Moore"
+                width={128}
+                height={140}
                 style={{ width: "8vw", minWidth: 80, marginBottom: "2vw" }}
               />
               {/* Badge logos */}
@@ -171,6 +173,8 @@ export default function Footer() {
                     key={badge.alt}
                     src={badge.src}
                     alt={badge.alt}
+                    width={80}
+                    height={36}
                     style={{ height: 36, width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.6 }}
                   />
                 ))}
