@@ -2,9 +2,11 @@
 
 import { useRef, useState, useEffect } from "react";
 import { gsap } from "@/lib/gsap";
+import { submitForm } from "@/lib/submitForm";
 
 interface HeroFormProps {
   helpOptions?: string[];
+  formName?: string;
 }
 
 const DEFAULT_OPTIONS = [
@@ -28,7 +30,7 @@ function CircleSVG() {
   );
 }
 
-export default function HeroForm({ helpOptions = DEFAULT_OPTIONS }: HeroFormProps) {
+export default function HeroForm({ helpOptions = DEFAULT_OPTIONS, formName = "Hero Form" }: HeroFormProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
   const [helpWith, setHelpWith] = useState<string[]>([]);
@@ -49,10 +51,22 @@ export default function HeroForm({ helpOptions = DEFAULT_OPTIONS }: HeroFormProp
       prev.includes(opt) ? prev.filter((o) => o !== opt) : [...prev, opt]
     );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => { setSubmitted(true); setSubmitting(false); }, 1200);
+    try {
+      await submitForm({
+        form_name: formName,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+        help_with: helpWith,
+        sms_consent: smsConsent,
+      });
+    } catch { /* non-blocking */ }
+    setSubmitted(true);
+    setSubmitting(false);
   };
 
   if (submitted) {
@@ -223,7 +237,7 @@ export default function HeroForm({ helpOptions = DEFAULT_OPTIONS }: HeroFormProp
             cursor: (submitting || !smsConsent) ? "not-allowed" : "pointer",
           }}
         >
-          {submitting ? "Sending…" : "Review My Case"}
+          {submitting ? "Sending…" : <><span className="btn-label-full">Request My Free Case Review</span><span className="btn-label-short">Review My Case</span></>}
           {!submitting && <CircleSVG />}
         </button>
 

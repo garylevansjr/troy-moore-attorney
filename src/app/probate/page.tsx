@@ -8,6 +8,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import SidePanel, { type PanelItem } from "@/components/SidePanel";
 import PageCTA from "@/components/PageCTA";
 import { gsap } from "@/lib/gsap";
+import { submitForm } from "@/lib/submitForm";
 
 /* ─── Layout constants — matching StayingInformed / home page ──── */
 const PAD: React.CSSProperties = {
@@ -817,11 +818,22 @@ function HeroForm() {
       prev.includes(opt) ? prev.filter((o) => o !== opt) : [...prev, opt]
     );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    // TODO: wire to form submission API
-    setTimeout(() => { setSubmitted(true); setSubmitting(false); }, 1200);
+    try {
+      await submitForm({
+        form_name: "Probate Hero Form",
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+        help_with: helpWith,
+        sms_consent: smsConsent,
+      });
+    } catch { /* non-blocking — still show success */ }
+    setSubmitted(true);
+    setSubmitting(false);
   };
 
   if (submitted) {
@@ -925,7 +937,7 @@ function HeroForm() {
           className="hero-form-btn"
           style={{ marginTop: "0.2rem", alignSelf: "flex-start" }}
         >
-          {submitting ? "Sending…" : "Review My Case"}
+          {submitting ? "Sending…" : <><span className="btn-label-full">Request My Free Case Review</span><span className="btn-label-short">Review My Case</span></>}
           {!submitting && <CircleSVG />}
         </button>
 

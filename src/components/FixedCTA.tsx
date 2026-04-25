@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { submitForm } from '@/lib/submitForm';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SERVICE_OPTIONS = [
@@ -41,7 +42,16 @@ export default function FixedCTA({ show }: { show: boolean }) {
     e.preventDefault();
     if (!name || !email) return;
     setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1200));
+    try {
+      await submitForm({
+        form_name: 'Talk To Troy',
+        name,
+        email,
+        phone,
+        services: selected,
+        sms_consent: smsConsent,
+      });
+    } catch { /* non-blocking */ }
     setIsSubmitting(false);
     setState('success');
     setTimeout(() => {

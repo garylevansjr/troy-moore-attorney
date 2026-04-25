@@ -7,6 +7,12 @@ import Footer from "@/components/Footer";
 import SidePanel, { type PanelItem } from "@/components/SidePanel";
 import PageCTA from "@/components/PageCTA";
 import { gsap } from "@/lib/gsap";
+import { submitForm } from "@/lib/submitForm";
+
+const openTalkToTroy = (e: React.MouseEvent) => {
+  e.preventDefault();
+  window.dispatchEvent(new CustomEvent("open-talk-to-troy"));
+};
 
 /* ─── Layout constants — matching probate page ──────────────────── */
 const PAD: React.CSSProperties = {
@@ -386,10 +392,22 @@ function HeroForm() {
       prev.includes(opt) ? prev.filter((o) => o !== opt) : [...prev, opt]
     );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => { setSubmitted(true); setSubmitting(false); }, 1200);
+    try {
+      await submitForm({
+        form_name: "Estate Planning Hero Form",
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+        help_with: helpWith,
+        sms_consent: smsConsent,
+      });
+    } catch { /* non-blocking */ }
+    setSubmitted(true);
+    setSubmitting(false);
   };
 
   if (submitted) {
@@ -503,7 +521,7 @@ function HeroForm() {
           className="hero-form-btn"
           style={{ alignSelf: "flex-start" }}
         >
-          {submitting ? "Sending…" : "Get a Consultation"}
+          {submitting ? "Sending…" : <><span className="btn-label-full">Request a Consultation</span><span className="btn-label-short">Get a Consultation</span></>}
           {!submitting && <CircleSVG />}
         </button>
 
@@ -623,9 +641,12 @@ function StatsStrip() {
 
   return (
     <section style={{
-      background: "var(--navy)",
-      borderTop: "1px solid rgba(255,255,255,0.08)",
-      boxShadow: "0 -8px 40px rgba(11,55,93,0.55), 0 8px 40px rgba(11,55,93,0.55), inset 0 1px 0 rgba(255,255,255,0.07)",
+      background: [
+        "radial-gradient(ellipse at 15% 50%, rgba(255,255,255,0.12) 0%, transparent 50%)",
+        "radial-gradient(ellipse at 85% 30%, rgba(160,110,20,0.35) 0%, transparent 45%)",
+        "linear-gradient(108deg, #b8882a 0%, #c3a05b 35%, #d4b06a 60%, #b8882a 100%)",
+      ].join(", "),
+      boxShadow: "0 -6px 32px rgba(195,160,91,0.35), 0 6px 32px rgba(195,160,91,0.35), inset 0 1px 0 rgba(255,255,255,0.2)",
     }}>
       <div style={{ ...WRAP, paddingTop: "clamp(2rem, 3vw, 3.5rem)", paddingBottom: "clamp(2rem, 3vw, 3.5rem)" }}>
         <div ref={stripRef} className="ep-trust-grid">
@@ -633,11 +654,11 @@ function StatsStrip() {
             <div key={i} style={{ textAlign: "center", padding: "clamp(1rem, 1.5vw, 1.5rem) 0" }}>
               <p
                 ref={(el) => { numRefs.current[i] = el; }}
-                style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", color: "#ffffff", fontSize: "clamp(3.2rem, 7vw, 8rem)", lineHeight: 1, letterSpacing: "-0.02em", marginBottom: "0.5rem" }}
+                style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", color: "var(--navy)", fontSize: "clamp(3.2rem, 7vw, 8rem)", lineHeight: 1, letterSpacing: "-0.02em", marginBottom: "0.5rem" }}
               >
                 {item.text ?? `0${item.suffix ?? ""}`}
               </p>
-              <p style={{ color: "rgba(255,255,255,0.65)", fontFamily: "var(--font-eyebrow)", fontSize: "clamp(0.7rem, 1vw, 1rem)", letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1.5 }}>
+              <p style={{ color: "rgba(11,55,93,0.7)", fontFamily: "var(--font-eyebrow)", fontSize: "clamp(0.7rem, 1vw, 1rem)", letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1.5 }}>
                 {item.label}
               </p>
             </div>
@@ -1123,8 +1144,8 @@ export default function EstatePlanningPage() {
                   </p>
                 </div>
                 <div style={{ width: 1, height: 60, background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
-                <div style={{ flex: 1, minWidth: "180px" }}>
-                  <p style={{ color: "var(--gold)", fontSize: "clamp(0.7rem, 0.75vw, 0.85rem)", marginBottom: "0.3rem" }}>
+                <div style={{ flex: 1, minWidth: "220px" }}>
+                  <p style={{ color: "var(--gold)", fontSize: "clamp(0.7rem, 0.75vw, 0.85rem)", marginBottom: "0.3rem", whiteSpace: "nowrap" }}>
                     Probate Avoidance Package™
                   </p>
                   <p style={{ color: "var(--gold)", fontWeight: 700, fontSize: "clamp(1.2rem, 1.8vw, 2rem)" }}>
@@ -1134,7 +1155,7 @@ export default function EstatePlanningPage() {
                     Complete plan — paid once, protects permanently
                   </p>
                 </div>
-                <a href="tel:2816090303" className="btn-cta-ghost" style={{ textDecoration: "none", flexShrink: 0 }}>
+                <a href="#" onClick={openTalkToTroy} className="btn-cta-ghost" style={{ textDecoration: "none", flexShrink: 0 }}>
                   Learn More <CircleSVG />
                 </a>
               </div>
