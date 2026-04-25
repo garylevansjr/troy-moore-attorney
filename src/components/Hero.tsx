@@ -135,7 +135,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
           #hero-inner { padding-left: 0 !important; padding-right: 0 !important; }
           #hero-img-wrap { height: auto; min-height: 0; padding: 0 !important; overflow: hidden; }
           #hero-img-wrap img { width: 100% !important; max-width: 85% !important; height: auto !important; margin-top: 95px; }
-          #hero-text { padding: 1.5rem; margin-top: 2rem; }
+          #hero-text { padding: 1.5rem !important; margin-top: 2rem; }
           .stats-columns { flex-direction: column !important; }
           .stats-left { min-width: 100% !important; }
         }
