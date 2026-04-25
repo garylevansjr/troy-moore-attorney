@@ -828,7 +828,7 @@ export default function EstatePlanningPage() {
               backgroundImage: "url(/assets/blue-bg2.png)",
               backgroundSize: "cover",
               backgroundPosition: "center",
-              paddingTop: "calc(72px + clamp(3rem, 5vw, 6rem))",
+              paddingTop: "calc(72px + clamp(5rem, 8vw, 9rem))",
             }}
           >
             <div className="ep-hero-grid">
