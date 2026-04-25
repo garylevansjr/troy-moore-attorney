@@ -14,7 +14,7 @@ const ADDRESSES = [
   },
   {
     "@type": "PostalAddress",
-    streetAddress: "408 E 7th Street Suite B",
+    streetAddress: "190 T.C. Jester Suite 100",
     addressLocality: "Houston",
     addressRegion: "TX",
     postalCode: "77007",
@@ -37,6 +37,7 @@ export function orgSchema() {
     "@type": ["LegalService", "LocalBusiness"],
     "@id": `${SITE_URL}/#organization`,
     name: FIRM_NAME,
+    legalName: FIRM_NAME,
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
@@ -94,6 +95,20 @@ export function orgSchema() {
       "https://www.facebook.com/troymmoorepllc/",
       "https://www.youtube.com/channel/UCeJvFWBkRiXtWwHaamQ-8Tg",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Legal Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Texas Probate Administration" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Estate Planning & Trusts" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Will Contests" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Life Insurance Litigation" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fiduciary Litigation" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Heirship Proceedings" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Transfer on Death Deed" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Special Needs Trusts" } },
+      ],
+    },
   };
 }
 
@@ -251,6 +266,7 @@ export function videoObjectSchema(video: {
   description: string;
   youtubeId: string;
   slug: string;
+  uploadDate?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -261,9 +277,20 @@ export function videoObjectSchema(video: {
     embedUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
     url: `https://www.youtube.com/watch?v=${video.youtubeId}`,
     contentUrl: `https://www.youtube.com/watch?v=${video.youtubeId}`,
-    uploadDate: "2024-01-01",
+    uploadDate: video.uploadDate ?? "2024-01-01",
     publisher: { "@id": `${SITE_URL}/#organization` },
     author: { "@id": `${SITE_URL}/team-members/troy-moore#person` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/videos/${video.slug}` },
+  };
+}
+
+export function speakableSchema(cssSelectors: string[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: cssSelectors,
+    },
   };
 }

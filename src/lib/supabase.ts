@@ -17,6 +17,7 @@ export interface Video {
   youtube_id: string;
   topics: string[];
   sort_order: number;
+  created_at: string;
 }
 
 export interface Testimonial {

@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   description:
     "Reach the Law Office of Troy M. Moore 24 hours a day, 7 days a week. Two Houston-area locations: Northwest Houston and The Heights.",
   alternates: { canonical: "https://troymoorelaw.com/contact" },
+  openGraph: {
+    title: "Contact Us | Law Office of Troy M. Moore, PLLC",
+    description: "Reach the Law Office of Troy M. Moore 24 hours a day, 7 days a week. Two Houston-area locations: Northwest Houston and The Heights.",
+    url: "https://troymoorelaw.com/contact",
+  },
 };
 
 /* ─── Layout constants ───────────────────────────────────────────── */
@@ -22,8 +27,8 @@ const OFFICES = [
     address: "20333 State Highway 249",
     suite: "Suite 140",
     city: "Houston, Texas 77070",
-    phone: "+1 (281) 942-6907",
-    tel: "12819426907",
+    phone: "+1 (281) 609-0303",
+    tel: "12816090303",
     tagline: "We're Always Available",
     hours: "24 hours a day — 7 days a week",
   },
@@ -32,8 +37,8 @@ const OFFICES = [
     address: "190 T.C. Jester",
     suite: "Suite 100",
     city: "Houston, Texas 77007",
-    phone: "+1 (281) 942-6907",
-    tel: "12819426907",
+    phone: "+1 (281) 609-0303",
+    tel: "12816090303",
     tagline: "We're Always Available",
     hours: "24 hours a day — 7 days a week",
   },

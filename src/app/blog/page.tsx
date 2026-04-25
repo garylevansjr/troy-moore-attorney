@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   description:
     "Legal insights on probate, estate planning, and personal injury in Texas from the Law Office of Troy M. Moore.",
   alternates: { canonical: "https://troymoorelaw.com/blog" },
+  openGraph: {
+    title: "Law Blog | Law Office of Troy M. Moore, PLLC",
+    description: "Legal insights on probate, estate planning, and personal injury in Texas from the Law Office of Troy M. Moore.",
+    url: "https://troymoorelaw.com/blog",
+  },
 };
 
 /* ─── Revalidate every hour ──────────────────────────────────────── */

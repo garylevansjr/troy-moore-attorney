@@ -59,7 +59,7 @@ export default async function VideoDetailPage({
 
   return (
     <>
-      <JsonLd data={videoObjectSchema({ title: video.title, description: video.description, youtubeId: video.youtube_id, slug: video.slug })} />
+      <JsonLd data={videoObjectSchema({ title: video.title, description: video.description, youtubeId: video.youtube_id, slug: video.slug, uploadDate: video.created_at?.split("T")[0] })} />
       <style>{`
         .video-embed-wrap {
           position: relative;
