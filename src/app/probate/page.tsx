@@ -1207,8 +1207,8 @@ export default function ProbatePage() {
                 </ScrollReveal>
               </div>
 
-              {/* Right: form */}
-              <HeroForm />
+              {/* Right: form — hidden */}
+              {/* <HeroForm /> */}
             </div>
 
             {/* Trust strip */}
