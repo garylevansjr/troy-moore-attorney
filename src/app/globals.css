@@ -80,6 +80,13 @@ body, p, a, span, li { font-size: clamp(0.88rem, 2.5vw, 1rem); line-height: 1.7;
   .eyebrow { font-size: 0.75rem !important; letter-spacing: 0.18em !important; }
 }
 
+/* ─── Responsive button label swap ─── */
+.btn-label-short { display: none; }
+@media (max-width: 640px) {
+  .btn-label-full  { display: none; }
+  .btn-label-short { display: inline; }
+}
+
 /* ─── vw-based typography for screens > 1000px ─── */
 @media (min-width: 1001px) {
   h1 { font-size: 3vw; line-height: 1.1; }

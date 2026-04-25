@@ -746,10 +746,15 @@ function CircleSVG() {
 }
 
 /* ─── Small reusable button components ──────────────────────────── */
-function PrimaryBtn({ label, href }: { label: string; href?: string }) {
+function PrimaryBtn({ label, mobileLabel, href }: { label: string; mobileLabel?: string; href?: string }) {
   return (
     <a href={href ?? "#consult"} className="btn-cta" style={{ textDecoration: "none" }}>
-      {label}
+      {mobileLabel ? (
+        <>
+          <span className="btn-label-full">{label}</span>
+          <span className="btn-label-short">{mobileLabel}</span>
+        </>
+      ) : label}
       <CircleSVG />
     </a>
   );
@@ -1366,7 +1371,7 @@ export default function ProbatePage() {
                     <strong>No will — not sure which Texas probate process applies?</strong> The right
                     procedure depends on the heirs, the property, and what the estate requires.
                   </p>
-                  <PrimaryBtn label="Find Out Which Option May Apply" href="#consult" />
+                  <PrimaryBtn label="Find Out Which Option May Apply" mobileLabel="Learn More" href="#consult" />
                 </div>
               </ScrollReveal>
             </div>
