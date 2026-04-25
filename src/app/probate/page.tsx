@@ -1052,6 +1052,7 @@ export default function ProbatePage() {
           .probate-cred-grid { grid-template-columns: 1fr; }
           .probate-options-grid { grid-template-columns: 1fr; }
           .probate-hero-start { display: none; }
+          .probate-cred-icon { width: 64px !important; height: 64px !important; }
           /* Tighter horizontal padding for hero copy on small screens */
           .probate-hero-grid {
             padding-left: 6vw;
@@ -1242,8 +1243,8 @@ export default function ProbatePage() {
                     { heading: "Serving Houston and Surrounding Communities", body: "Houston, Spring, Tomball, Cypress, The Woodlands, and neighboring communities throughout the region." },
                   ].map((c, i) => (
                     <div key={c.heading} style={{ padding: "clamp(1.5rem, 2.5vw, 2.5rem)", border: "1px solid #ebebeb", borderRadius: "4px" }}>
-                      <div style={{ width: 32, height: 32, marginBottom: "1rem", color: "var(--gold)" }} dangerouslySetInnerHTML={{ __html: CRED_ICONS[i] }} />
-                      <p style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", fontSize: "clamp(1rem, 1.3vw, 1.25rem)", lineHeight: 1.3, color: "var(--navy)", marginBottom: "0.6em" }}>
+                      <div className="probate-cred-icon" style={{ width: 32, height: 32, marginBottom: "1rem", color: "var(--gold)" }} dangerouslySetInnerHTML={{ __html: CRED_ICONS[i] }} />
+                      <p style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", fontSize: "clamp(1.2rem, 1.3vw, 1.4rem)", lineHeight: 1.3, color: "var(--navy)", marginBottom: "0.6em" }}>
                         {c.heading}
                       </p>
                       <p style={{ color: "#5a6a7a", margin: 0 }}>{c.body}</p>
@@ -1405,7 +1406,7 @@ export default function ProbatePage() {
                   ].map((opt) => (
                     <div key={opt.title} style={{ padding: "clamp(1.2rem, 2vw, 2rem)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "4px", background: "rgba(255,255,255,0.04)" }}>
                       <div style={{ width: "2px", height: "clamp(1.5rem, 2vw, 2rem)", background: "var(--gold)", marginBottom: "clamp(0.8rem, 1.2vw, 1.2rem)" }} />
-                      <p style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", fontSize: "clamp(1rem, 1.3vw, 1.25rem)", color: "#ffffff", marginBottom: "0.5em", lineHeight: 1.3 }}>
+                      <p style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", fontSize: "clamp(1.2rem, 1.3vw, 1.4rem)", color: "#ffffff", marginBottom: "0.5em", lineHeight: 1.3 }}>
                         {opt.title}
                       </p>
                       <p style={{ color: "rgba(255,255,255,0.58)", margin: 0 }}>{opt.body}</p>
