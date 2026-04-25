@@ -641,24 +641,24 @@ function StatsStrip() {
 
   return (
     <section style={{
-      background: [
-        "radial-gradient(ellipse at 15% 50%, rgba(255,255,255,0.12) 0%, transparent 50%)",
-        "radial-gradient(ellipse at 85% 30%, rgba(160,110,20,0.35) 0%, transparent 45%)",
-        "linear-gradient(108deg, #b8882a 0%, #c3a05b 35%, #d4b06a 60%, #b8882a 100%)",
-      ].join(", "),
-      boxShadow: "0 -6px 32px rgba(195,160,91,0.35), 0 6px 32px rgba(195,160,91,0.35), inset 0 1px 0 rgba(255,255,255,0.2)",
+      background: "linear-gradient(180deg, #040e1c 0%, #071828 50%, #040e1c 100%)",
+      borderTop: "1px solid rgba(195,160,91,0.35)",
+      borderBottom: "1px solid rgba(195,160,91,0.35)",
+      boxShadow: "0 -12px 48px rgba(0,0,0,0.4), 0 12px 48px rgba(0,0,0,0.4)",
     }}>
-      <div style={{ ...WRAP, paddingTop: "clamp(2rem, 3vw, 3.5rem)", paddingBottom: "clamp(2rem, 3vw, 3.5rem)" }}>
+      <div style={{ ...WRAP, paddingTop: "clamp(2.5rem, 4vw, 5rem)", paddingBottom: "clamp(2.5rem, 4vw, 5rem)" }}>
         <div ref={stripRef} className="ep-trust-grid">
           {STATS.map((item, i) => (
-            <div key={i} style={{ textAlign: "center", padding: "clamp(1rem, 1.5vw, 1.5rem) 0" }}>
+            <div key={i} style={{ textAlign: "center", padding: "0 clamp(1rem, 2vw, 2rem)", position: "relative" }}>
+              {/* gold glow spotlight behind each number */}
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -55%)", width: "clamp(140px, 18vw, 260px)", height: "clamp(140px, 18vw, 260px)", borderRadius: "50%", background: "radial-gradient(ellipse, rgba(195,160,91,0.13) 0%, transparent 70%)", pointerEvents: "none" }} />
               <p
                 ref={(el) => { numRefs.current[i] = el; }}
-                style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", color: "var(--navy)", fontSize: "clamp(3.2rem, 7vw, 8rem)", lineHeight: 1, letterSpacing: "-0.02em", marginBottom: "0.5rem" }}
+                style={{ fontFamily: "var(--font-heading)", fontWeight: 300, fontStyle: "italic", color: "var(--gold)", fontSize: "clamp(3.2rem, 7vw, 8rem)", lineHeight: 1, letterSpacing: "-0.02em", marginBottom: "0.6rem", position: "relative" }}
               >
                 {item.text ?? `0${item.suffix ?? ""}`}
               </p>
-              <p style={{ color: "rgba(11,55,93,0.7)", fontFamily: "var(--font-eyebrow)", fontSize: "clamp(0.7rem, 1vw, 1rem)", letterSpacing: "0.18em", textTransform: "uppercase", lineHeight: 1.5 }}>
+              <p style={{ color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-eyebrow)", fontSize: "clamp(0.62rem, 0.8vw, 0.88rem)", letterSpacing: "0.22em", textTransform: "uppercase", lineHeight: 1.5, position: "relative" }}>
                 {item.label}
               </p>
             </div>
@@ -757,7 +757,13 @@ export default function EstatePlanningPage() {
         .ep-trust-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: clamp(1rem, 2vw, 2rem);
+          gap: 0;
+        }
+        .ep-trust-grid > div + div {
+          border-left: 1px solid rgba(195,160,91,0.2);
+        }
+        @media (max-width: 640px) {
+          .ep-trust-grid > div + div { border-left: none; border-top: 1px solid rgba(195,160,91,0.2); }
         }
         .ep-package-grid {
           display: grid;
