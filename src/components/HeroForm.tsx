@@ -206,7 +206,7 @@ export default function HeroForm({ helpOptions = DEFAULT_OPTIONS }: HeroFormProp
             opacity: submitting ? 0.7 : 1,
           }}
         >
-          {submitting ? "Sending…" : "Request My Free Case Review"}
+          {submitting ? "Sending…" : "Review My Case"}
           {!submitting && <CircleSVG />}
         </button>
 

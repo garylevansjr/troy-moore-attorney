@@ -487,7 +487,7 @@ function HeroForm() {
           className="btn-cta"
           style={{ justifyContent: "space-between", opacity: submitting ? 0.7 : 1 }}
         >
-          {submitting ? "Sending…" : "Request a Consultation"}
+          {submitting ? "Sending…" : "Get a Consultation"}
           {!submitting && <CircleSVG />}
         </button>
       </form>
@@ -740,7 +740,6 @@ export default function EstatePlanningPage() {
         }
         @media (max-width: 960px) {
           .ep-hero-grid { grid-template-columns: 1fr; padding-right: 10vw; }
-          .ep-hero-form { order: -1; }
         }
         @media (max-width: 640px) {
           .ep-trust-grid { grid-template-columns: 1fr 1fr; }

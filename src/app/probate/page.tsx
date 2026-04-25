@@ -896,7 +896,7 @@ function HeroForm() {
           className="btn-cta"
           style={{ justifyContent: "space-between", width: "100%", marginTop: "0.2rem", opacity: submitting ? 0.7 : 1 }}
         >
-          {submitting ? "Sending…" : "Request My Free Case Review"}
+          {submitting ? "Sending…" : "Review My Case"}
           {!submitting && <CircleSVG />}
         </button>
 
@@ -1076,7 +1076,6 @@ export default function ProbatePage() {
         }
         @media (max-width: 960px) {
           .probate-hero-grid { grid-template-columns: 1fr; padding-right: 10vw; }
-          .probate-hero-form { order: -1; }
         }
 
         /* ── Hero form card inputs ── */
