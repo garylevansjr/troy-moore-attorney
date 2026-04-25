@@ -1053,6 +1053,8 @@ export default function ProbatePage() {
           .probate-options-grid { grid-template-columns: 1fr; }
           .probate-hero-start { display: none; }
           .probate-cred-icon { width: 64px !important; height: 64px !important; }
+          .probate-cta-row { flex-direction: column; align-items: flex-start !important; }
+          .probate-cta-row a:last-child { margin-top: 0.5rem; }
           /* Tighter horizontal padding for hero copy on small screens */
           .probate-hero-grid {
             padding-left: 6vw;
@@ -1520,7 +1522,7 @@ export default function ProbatePage() {
             heading="Ready to Understand Your Probate Options?"
             description="If you need help understanding whether an estate should proceed through probate of a will, muniment of title, heirship, administration, a small estate affidavit, or another Texas probate option, Troy M. Moore, PLLC can help you evaluate the situation and determine the right next step."
           >
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }} className="probate-cta-row">
               <a href="tel:2816090303" className="btn-cta" style={{ textDecoration: "none" }}>
                 Call (281) 609-0303
                 <span className="cta-circle">
@@ -1531,7 +1533,7 @@ export default function ProbatePage() {
                   </svg>
                 </span>
               </a>
-              <GhostBtn label="Review Probate Process Summary" href="/practices/houston-cypress-texas-probate-attorney" />
+              <GhostBtn label="Review Probate Process Summary" mobileLabel="Review Process" href="/practices/houston-cypress-texas-probate-attorney" />
             </div>
           </PageCTA>
         </main>
