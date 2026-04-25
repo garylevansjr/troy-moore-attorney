@@ -921,10 +921,18 @@ const CRED_ICONS = [
 export default function ProbatePage() {
   const [panelItem, setPanelItem] = useState<PanelItem | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+    const mq = window.matchMedia("(max-width: 1023px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   // After portal mounts, push panel offscreen
   useEffect(() => {
@@ -1033,7 +1041,7 @@ export default function ProbatePage() {
         .probate-mobile-cta { display: none; }
 
         @media (max-width: 1023px) {
-          .panel-close-btn { left: auto !important; right: 3.5vw !important; transform: none !important; }
+
           .probate-decision-grid { grid-template-columns: 1fr; }
           .probate-trust-grid { grid-template-columns: 1fr 1fr; }
           .probate-cred-grid { grid-template-columns: 1fr 1fr; }
@@ -1538,7 +1546,7 @@ export default function ProbatePage() {
       {mounted && createPortal(
         <>
           {panelItem && (
-            <div className="panel-close-btn" style={{ position: "fixed", top: "1.5rem", left: "7.5vw", transform: "translateX(-50%)", zIndex: 600, padding: 8, borderRadius: "50%", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.3)", boxShadow: "0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.35)" }}>
+            <div style={{ position: "fixed", top: "1.5rem", ...(isMobile ? { left: "auto", right: "3.5vw", transform: "none" } : { left: "7.5vw", transform: "translateX(-50%)" }), zIndex: 600, padding: 8, borderRadius: "50%", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.3)", boxShadow: "0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.35)" }}>
               <button
                 onClick={closePanel}
                 aria-label="Close panel"
