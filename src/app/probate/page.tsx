@@ -760,19 +760,19 @@ function PrimaryBtn({ label, mobileLabel, href }: { label: string; mobileLabel?:
   );
 }
 
-function GhostBtn({ label, href }: { label: string; href?: string }) {
+function GhostBtn({ label, mobileLabel, href }: { label: string; mobileLabel?: string; href?: string }) {
   return (
     <a href={href ?? "#consult"} className="btn-cta-ghost" style={{ textDecoration: "none" }}>
-      {label}
+      {mobileLabel ? <><span className="btn-label-full">{label}</span><span className="btn-label-short">{mobileLabel}</span></> : label}
       <CircleSVG />
     </a>
   );
 }
 
-function NavyBtn({ label, href }: { label: string; href?: string }) {
+function NavyBtn({ label, mobileLabel, href }: { label: string; mobileLabel?: string; href?: string }) {
   return (
     <a href={href ?? "#consult"} className="btn-cta" style={{ textDecoration: "none" }}>
-      {label}
+      {mobileLabel ? <><span className="btn-label-full">{label}</span><span className="btn-label-short">{mobileLabel}</span></> : label}
       <CircleSVG />
     </a>
   );
@@ -1289,7 +1289,7 @@ export default function ProbatePage() {
                       Testamentary. In some cases, a Muniment of Title may provide a more streamlined path.
                       The right option depends on the estate and the authority needed to act.
                     </p>
-                    <GhostBtn label="Explore Probate With a Will" href="#with-a-will" />
+                    <GhostBtn label="Explore Probate With a Will" mobileLabel="Learn More" href="#with-a-will" />
                   </div>
                   <div className="probate-decision-card" style={{ background: "#ffffff", padding: "clamp(2rem, 3.5vw, 3.5rem)", borderRadius: "4px", border: "1px solid #e8e8e8" }}>
                     <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "clamp(1rem, 1.5vw, 1.5rem)" }}>There Is No Will</p>
@@ -1302,7 +1302,7 @@ export default function ProbatePage() {
                       correct option depends on the family structure, the property involved, and whether the
                       estate needs a personal representative.
                     </p>
-                    <NavyBtn label="Explore Probate Without a Will" href="#without-a-will" />
+                    <NavyBtn label="Explore Probate Without a Will" mobileLabel="Learn More" href="#without-a-will" />
                   </div>
                 </div>
               </ScrollReveal>
