@@ -14,6 +14,17 @@ const nextConfig: NextConfig = {
         destination: "/practices/:slug",
         permanent: true,
       },
+      // ── practice-areas slug redirects ───────────────────────────────────────
+      {
+        source: "/practice-areas/estate-planning-trust-lawyer-houston/",
+        destination: "/practices/estate-planning-trust-lawyer-houston",
+        permanent: true,
+      },
+      {
+        source: "/practice-areas/estate-planning-trust-lawyer-houston",
+        destination: "/practices/estate-planning-trust-lawyer-houston",
+        permanent: true,
+      },
       // ── Section indexes ──────────────────────────────────────────────────────
       {
         source: "/sub-practices/",

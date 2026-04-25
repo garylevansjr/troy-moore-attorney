@@ -1,5 +1,49 @@
 [
   {
+    "slug": "estate-planning-trust-lawyer-houston",
+    "label": "ESTATE PLANNING",
+    "title": "Houston Estate Planning & Trust Lawyer",
+    "description": "Comprehensive estate planning services — wills, trusts, powers of attorney, living wills, and transfer on death deeds — tailored to protect your family and avoid probate court entirely.",
+    "href": "/practices/estate-planning-trust-lawyer-houston",
+    "panel": {
+      "headline": "Houston Estate Planning Lawyers — Representation That Prepares For The Future",
+      "sections": [
+        {
+          "heading": "A Comprehensive Estate Plan for Your Family",
+          "body": "At the Law Office of Troy M. Moore, PLLC, we apply legal understanding and experienced perspective to your situation to help you create an estate plan that comprehensively protects and provides for your loved ones. With more than 25 years of experience, we assist clients through a broad array of estate planning challenges — from simple wills to complex trust structures."
+        },
+        {
+          "heading": "Avoid Probate Entirely",
+          "body": "The key to estate planning in Texas is to avoid Probate Court entirely. Did you know that probate for an individual costs $5,000 or more? For a married couple, that doubles. Our Probate Avoidance Package™ bundles the documents you need — revocable living trust, pour-over will, powers of attorney, and more — into one strategic plan that keeps your estate out of court.",
+          "list": [
+            "Revocable Living Trust — transfers assets to a legal entity you control, bypassing probate at death",
+            "Last Will & Testament — names beneficiaries and executors; coordinates with your trust",
+            "Transfer on Death Deed — the single most effective way to pass real estate without probate"
+          ]
+        },
+        {
+          "heading": "Powers of Attorney & Incapacity Planning",
+          "body": "Without powers of attorney in place, no one can legally manage your affairs if you become incapacitated — not even a spouse. We draft both documents to cover every contingency.",
+          "list": [
+            "Financial (Statutory Durable) Power of Attorney — authorizes your agent to manage bank accounts, pay bills, and handle real estate",
+            "Medical Power of Attorney — designates who makes healthcare decisions if you cannot",
+            "Directive to Physicians (Living Will) — instructs your doctor on life-sustaining treatment"
+          ]
+        },
+        {
+          "heading": "Specialized Planning Tools",
+          "body": "Every estate is different. Depending on your situation, additional tools may be appropriate.",
+          "list": [
+            "Special Needs Trust — provides supplemental support for a disabled beneficiary without disqualifying government benefits",
+            "Self-Directed IRA — build retirement wealth through alternative assets while planning for heirs",
+            "Transfer on Death Deed — designate a beneficiary for your home, lake house, or vacant lot without a trust"
+          ],
+          "closing": "Call (281) 609-0303 or complete our online Estate Planning Questionnaire to start the process today."
+        }
+      ]
+    }
+  },
+  {
     "slug": "beneficiary-interpleader-litigation",
     "label": "PROBATE",
     "title": "Beneficiary Interpleader Litigation",
