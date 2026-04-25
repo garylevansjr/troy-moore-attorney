@@ -19,9 +19,15 @@ export default function PageCTA({ eyebrow, heading, description, children, id }:
     <section
       id={id}
       style={{
-        backgroundImage: "url(/assets/blue-bg2.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        background: [
+          "radial-gradient(ellipse at 18% 30%, rgba(14, 62, 115, 0.75) 0%, transparent 46%)",
+          "radial-gradient(ellipse at 82% 70%, rgba(3, 10, 28, 0.85) 0%, transparent 44%)",
+          "radial-gradient(ellipse at 60% 8%, rgba(10, 44, 90, 0.55) 0%, transparent 38%)",
+          "radial-gradient(ellipse at 30% 92%, rgba(5, 18, 48, 0.65) 0%, transparent 36%)",
+          "radial-gradient(ellipse at 90% 18%, rgba(15, 58, 112, 0.5) 0%, transparent 34%)",
+          "radial-gradient(ellipse at 50% 50%, rgba(11, 55, 93, 0.3) 0%, transparent 60%)",
+          "linear-gradient(135deg, #030c1d 0%, #061828 22%, #0b375d 50%, #071d3c 75%, #030c1d 100%)",
+        ].join(", "),
         paddingTop: "clamp(3rem, 4.5vw, 5rem)",
         paddingBottom: "clamp(3rem, 4.5vw, 5rem)",
       }}
