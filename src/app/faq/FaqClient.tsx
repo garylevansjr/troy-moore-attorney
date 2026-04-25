@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import faqData from "@/data/faq.json";
+import type { FaqItem } from "@/lib/supabase";
 
 const CATEGORIES = ["Probate", "Estate Planning", "Other Practices"] as const;
 type Category = (typeof CATEGORIES)[number];
@@ -17,7 +17,7 @@ const WRAP: React.CSSProperties = {
   paddingRight: "10vw",
 };
 
-export default function FaqClient() {
+export default function FaqClient({ faqData }: { faqData: FaqItem[] }) {
   const [activeCategory, setActiveCategory] = useState<Category>("Probate");
   const [openId, setOpenId] = useState<number | null>(null);
 

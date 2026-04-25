@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import videosData from "@/data/videos.json";
+import { supabase } from "@/lib/supabase";
+import type { Video } from "@/lib/supabase";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Videos | Law Office of Troy M. Moore, PLLC",
@@ -15,7 +18,16 @@ const WRAP: React.CSSProperties = {
   paddingRight: "10vw",
 };
 
-export default function VideosPage() {
+async function getVideos(): Promise<Video[]> {
+  const { data } = await supabase
+    .from("videos")
+    .select("*")
+    .order("sort_order");
+  return data ?? [];
+}
+
+export default async function VideosPage() {
+  const videosData = await getVideos();
   return (
     <>
       <style>{`
@@ -175,7 +187,7 @@ export default function VideosPage() {
                   <div className="video-thumb">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+                      src={`https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`}
                       alt={video.title}
                       loading="lazy"
                     />

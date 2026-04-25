@@ -2,21 +2,30 @@
 
 import { useState, useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import testimonialsData from "@/data/testimonials.json";
+import { supabase } from "@/lib/supabase";
+import type { Testimonial } from "@/lib/supabase";
+import staticData from "@/data/testimonials.json";
 
 export default function TestimonialCarousel() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(staticData as Testimonial[]);
   const [idx, setIdx] = useState(0);
   const [busy, setBusy] = useState(false);
   const quoteRef = useRef<HTMLDivElement>(null);
   const attrRef  = useRef<HTMLSpanElement>(null);
   const isFirst  = useRef(true);
 
+  useEffect(() => {
+    supabase.from("testimonials").select("*").order("sort_order").then(({ data }) => {
+      if (data?.length) setTestimonials(data);
+    });
+  }, []);
+
   const navigate = (dir: 1 | -1) => {
     if (busy) return;
     setBusy(true);
     gsap.to([quoteRef.current, attrRef.current], {
       opacity: 0, y: -14, duration: 0.22, ease: "power2.in",
-      onComplete: () => setIdx(i => (i + dir + testimonialsData.length) % testimonialsData.length),
+      onComplete: () => setIdx(i => (i + dir + testimonials.length) % testimonials.length),
     });
   };
 
@@ -29,7 +38,7 @@ export default function TestimonialCarousel() {
     );
   }, [idx]);
 
-  const t = testimonialsData[idx];
+  const t = testimonials[idx] ?? testimonials[0];
 
   return (
     <div style={{

@@ -1,12 +1,18 @@
-import faqData from "@/data/faq.json";
+import { supabase } from "@/lib/supabase";
 
 interface FAQPreviewProps {
   category: "Probate" | "Estate Planning" | "Other Practices";
   limit?: number;
 }
 
-export default function FAQPreview({ category, limit = 5 }: FAQPreviewProps) {
-  const items = faqData.filter((f) => f.category === category).slice(0, limit);
+export default async function FAQPreview({ category, limit = 5 }: FAQPreviewProps) {
+  const { data } = await supabase
+    .from("faq")
+    .select("id, question")
+    .eq("category", category)
+    .order("sort_order")
+    .limit(limit);
+  const items = data ?? [];
 
   return (
     <>

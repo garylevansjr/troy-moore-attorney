@@ -1,15 +1,35 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import TransitionLink from "./TransitionLink";
 import { gsap } from "@/lib/gsap";
-import data from "@/data/featured-article.json";
+import { supabase } from "@/lib/supabase";
+import type { FeaturedArticle as FeaturedArticleType } from "@/lib/supabase";
+import staticData from "@/data/featured-article.json";
+
+const STATIC: FeaturedArticleType = {
+  id: 1,
+  eyebrow: staticData.eyebrow,
+  headline: staticData.headline,
+  description: staticData.description,
+  button_text: staticData.buttonText,
+  button_href: staticData.buttonHref,
+  background_image: staticData.backgroundImage,
+  article_image: staticData.articleImage,
+};
 
 export default function FeaturedArticle() {
+  const [data, setData] = useState<FeaturedArticleType>(STATIC);
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    supabase.from("featured_article").select("*").single().then(({ data: row }) => {
+      if (row) setData(row);
+    });
+  }, []);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -86,7 +106,7 @@ export default function FeaturedArticle() {
             }}
           >
             <Image
-              src={data.articleImage}
+              src={data.article_image}
               alt={data.headline}
               width={900}
               height={540}
@@ -119,8 +139,8 @@ export default function FeaturedArticle() {
           >
             {data.description}
           </p>
-          <TransitionLink href={data.buttonHref} className="btn-cta">
-            {data.buttonText}
+          <TransitionLink href={data.button_href} className="btn-cta">
+            {data.button_text}
             <span className="cta-circle">
               <svg viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "1.625em", height: "1.625em" }}>
                 <path className="CircleIcon_circle__vewPw" d="M0.75 14.5a13.75 13.75 0 1 0 27.5 0a13.75 13.75 0 1 0 -27.5 0" />

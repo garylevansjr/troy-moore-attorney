@@ -10,13 +10,36 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import { gsap } from "@/lib/gsap";
-import postsData from "@/data/latest-posts.json";
+import { supabase } from "@/lib/supabase";
+import type { HomepagePost } from "@/lib/supabase";
+import staticData from "@/data/latest-posts.json";
+
+function toPost(raw: typeof staticData[0]): HomepagePost {
+  return {
+    id: raw.id,
+    title: raw.title,
+    description: raw.description,
+    category: raw.category,
+    image: raw.image,
+    href: raw.href,
+    overlay_color: raw.overlayColor,
+    overlay_text_color: raw.overlayTextColor,
+    sort_order: raw.id,
+  };
+}
 
 export default function LatestCarousel() {
+  const [postsData, setPostsData] = useState<HomepagePost[]>(staticData.map(toPost));
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    supabase.from("homepage_posts").select("*").order("sort_order").then(({ data }) => {
+      if (data?.length) setPostsData(data);
+    });
+  }, []);
 
   useEffect(() => {
     if (!sectionRef.current || !carouselRef.current) return;

@@ -6,15 +6,24 @@ import FAQPreview from "@/components/FAQPreview";
 import PageCTA from "@/components/PageCTA";
 import JsonLd from "@/components/JsonLd";
 import { videoObjectSchema } from "@/lib/schemas";
-import videosData from "@/data/videos.json";
+import { supabase } from "@/lib/supabase";
+import type { Video } from "@/lib/supabase";
+
+export const revalidate = 3600;
+
+async function getVideos(): Promise<Video[]> {
+  const { data } = await supabase.from("videos").select("*").order("sort_order");
+  return data ?? [];
+}
 
 const WRAP: React.CSSProperties = {
   paddingLeft: "10vw",
   paddingRight: "10vw",
 };
 
-export function generateStaticParams() {
-  return videosData.map((v) => ({ slug: v.slug }));
+export async function generateStaticParams() {
+  const { data } = await supabase.from("videos").select("slug");
+  return (data ?? []).map((v) => ({ slug: v.slug }));
 }
 
 export async function generateMetadata({
@@ -23,7 +32,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const video = videosData.find((v) => v.slug === slug);
+  const { data: video } = await supabase
+    .from("videos")
+    .select("title, description")
+    .eq("slug", slug)
+    .single();
   if (!video) return {};
   return {
     title: `${video.title} | Law Office of Troy M. Moore, PLLC`,
@@ -38,14 +51,15 @@ export default async function VideoDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const video = videosData.find((v) => v.slug === slug);
+  const videos = await getVideos();
+  const video = videos.find((v) => v.slug === slug);
   if (!video) notFound();
 
-  const others = videosData.filter((v) => v.slug !== slug);
+  const others = videos.filter((v) => v.slug !== slug);
 
   return (
     <>
-      <JsonLd data={videoObjectSchema({ title: video.title, description: video.description, youtubeId: video.youtubeId, slug: video.slug })} />
+      <JsonLd data={videoObjectSchema({ title: video.title, description: video.description, youtubeId: video.youtube_id, slug: video.slug })} />
       <style>{`
         .video-embed-wrap {
           position: relative;
@@ -185,7 +199,7 @@ export default async function VideoDetailPage({
               <div>
                 <div className="video-embed-wrap">
                   <iframe
-                    src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0&modestbranding=1`}
+                    src={`https://www.youtube.com/embed/${video.youtube_id}?rel=0&modestbranding=1`}
                     title={video.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -365,7 +379,7 @@ export default async function VideoDetailPage({
                     <div className="related-thumb">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={`https://img.youtube.com/vi/${v.youtubeId}/mqdefault.jpg`}
+                        src={`https://img.youtube.com/vi/${v.youtube_id}/mqdefault.jpg`}
                         alt={v.title}
                         loading="lazy"
                       />
