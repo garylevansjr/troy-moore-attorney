@@ -1032,7 +1032,6 @@ export default function ProbatePage() {
           gap: clamp(2rem, 4vw, 5rem);
           align-items: center;
         }
-        .probate-mobile-cta { display: none; }
 
         @media (max-width: 1023px) {
 
@@ -1047,9 +1046,6 @@ export default function ProbatePage() {
           .probate-trust-grid { grid-template-columns: 1fr; }
           .probate-cred-grid { grid-template-columns: 1fr; }
           .probate-options-grid { grid-template-columns: 1fr; }
-          .probate-mobile-cta { display: flex; }
-          /* Bottom padding so footer isn't hidden behind the sticky CTA bar */
-          main { padding-bottom: 76px; }
           /* Tighter horizontal padding for hero copy on small screens */
           .probate-hero-grid {
             padding-left: 6vw;
@@ -1544,18 +1540,6 @@ export default function ProbatePage() {
       )}
 
 
-      {/* ── Mobile sticky CTA bar ────────────────────────────────── */}
-      <div
-        className="probate-mobile-cta"
-        style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 400, background: "var(--navy)", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "0.75rem 1.25rem", gap: "0.75rem", alignItems: "center" }}
-      >
-        <a href="tel:2816090303" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "0.75rem 1rem", borderRadius: "9999px", background: "var(--gold)", color: "var(--navy)", fontFamily: "var(--font-eyebrow)", fontSize: "0.72rem", letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", fontWeight: 600 }}>
-          Call Now
-        </a>
-        <a href="#start-here" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "0.75rem 1rem", borderRadius: "9999px", border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", fontFamily: "var(--font-eyebrow)", fontSize: "0.72rem", letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
-          Start Here
-        </a>
-      </div>
     </>
   );
 }

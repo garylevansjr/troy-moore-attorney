@@ -253,14 +253,6 @@ export default function AboutPage() {
         .side-panel { width: 85vw; }
         @media (max-width: 640px) { .side-panel { width: 100vw; } }
 
-        /* ── Mobile padding ── */
-        @media (max-width: 640px) {
-          main { padding-bottom: 76px; }
-        }
-
-        /* ── Mobile sticky CTA ── */
-        .about-mobile-cta { display: none; }
-        @media (max-width: 640px) { .about-mobile-cta { display: flex; } }
       `}</style>
 
       <div
@@ -554,22 +546,6 @@ export default function AboutPage() {
         </main>
 
         <Footer />
-      </div>
-
-      {/* ── Mobile sticky CTA ──────────────────────────────────── */}
-      <div
-        className="about-mobile-cta"
-        style={{
-          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 400,
-          padding: "0.85rem 1.25rem",
-          background: "var(--navy)",
-          borderTop: "1px solid rgba(255,255,255,0.12)",
-          gap: "0.75rem", alignItems: "center", justifyContent: "center",
-        }}
-      >
-        <a href="tel:2816090303" className="btn-cta" style={{ flex: 1, justifyContent: "center", textDecoration: "none" }}>
-          Call (281) 609-0303
-        </a>
       </div>
 
       {/* ── Portal: close button + SidePanel ─────────────────────── */}
