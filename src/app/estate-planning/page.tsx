@@ -500,8 +500,7 @@ function HeroForm() {
         <button
           type="submit"
           disabled={submitting || !smsConsent}
-          className="btn-cta"
-          style={{ justifyContent: "space-between", opacity: (submitting || !smsConsent) ? 0.5 : 1, cursor: (submitting || !smsConsent) ? "not-allowed" : "pointer" }}
+          className="hero-form-btn"
         >
           {submitting ? "Sending…" : "Get a Consultation"}
           {!submitting && <CircleSVG />}
@@ -809,6 +808,35 @@ export default function EstatePlanningPage() {
           width: 5px; height: 9px;
           border: 2px solid #fff; border-top: none; border-left: none;
           transform: rotate(45deg);
+        }
+
+        /* ── Hero form submit button ── */
+        .hero-form-btn {
+          display: inline-flex; align-items: center; gap: 0.6em;
+          padding: 0.55em 0.55em 0.55em 1.4em; border-radius: 9999px;
+          background: #fff; color: var(--navy);
+          border: 1.5px solid var(--navy); cursor: pointer; font-weight: 400;
+          transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hero-form-btn:hover {
+          background: rgba(11,55,93,0.04);
+          box-shadow: 0 6px 24px rgba(11,55,93,0.18);
+          transform: scale(1.03);
+        }
+        .hero-form-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+        .hero-form-btn .cta-circle { color: rgba(11,55,93,0.28); transition: color 0.3s ease; }
+        .hero-form-btn:hover .cta-circle { color: var(--navy); }
+        .hero-form-btn .cta-circle svg .CircleIcon_circle__vewPw {
+          stroke: rgba(11,55,93,0.18); stroke-width: 1.5; fill: none;
+          stroke-dasharray: 100; stroke-dashoffset: 0; transition: stroke 0.3s ease;
+        }
+        .hero-form-btn .cta-circle svg .CircleIcon_circle-overlay__lg7sz {
+          stroke: var(--navy); stroke-width: 1.5; fill: none;
+          stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 0.5s ease;
+        }
+        .hero-form-btn:hover .cta-circle svg .CircleIcon_circle-overlay__lg7sz { stroke-dashoffset: 0; }
+        .hero-form-btn .cta-circle svg .CircleIcon_icon__n80xg {
+          stroke: currentColor; fill: none; transition: stroke 0.3s ease;
         }
 
         /* ── Package component card ── */
