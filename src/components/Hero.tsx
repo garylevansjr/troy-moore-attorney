@@ -133,8 +133,8 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
         @media (max-width: 1023px) {
           #hero { padding-top: 0 !important; }
           #hero-inner { padding-left: 0 !important; padding-right: 0 !important; }
-          #hero-img-wrap { height: 71svh; padding: 0 !important; }
-          #hero-img-wrap img { object-position: right top !important; max-width: 80%; }
+          #hero-img-wrap { height: calc(100svh - 72px); min-height: 480px; padding: 0 !important; overflow: hidden; align-items: flex-start; }
+          #hero-img-wrap img { width: 100% !important; max-width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: top center !important; }
           #hero-text { padding: 1.5rem; margin-top: 2rem; }
           .stats-columns { flex-direction: column !important; }
           .stats-left { min-width: 100% !important; }

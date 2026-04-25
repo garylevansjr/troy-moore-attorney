@@ -61,6 +61,7 @@ export default function Navbar() {
         @media (max-width: 1023px) {
           #navbar-logo { transform: scale(0.8); transform-origin: left top; }
           .mobile-hamburger { display: flex !important; }
+          .navbar { transform: translateY(0) !important; }
         }
       `}</style>
       <nav
