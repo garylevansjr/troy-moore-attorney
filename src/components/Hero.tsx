@@ -138,6 +138,7 @@ export default function Hero({ loaderDone }: { loaderDone: boolean }) {
           #hero-text { padding: 1.5rem !important; margin-top: 2rem; }
           .stats-columns { flex-direction: column !important; }
           .stats-left { min-width: 100% !important; }
+          .stats-columns > div:last-child { padding-bottom: 50px; }
         }
       `}</style>
 

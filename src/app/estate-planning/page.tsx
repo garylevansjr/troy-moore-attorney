@@ -800,6 +800,8 @@ export default function EstatePlanningPage() {
         @media (max-width: 640px) {
           .ep-trust-grid { grid-template-columns: 1fr 1fr; }
           .ep-package-grid { grid-template-columns: 1fr; }
+          .ep-package-card > p:first-child { font-size: 3rem !important; line-height: 1 !important; margin-bottom: 0.4rem !important; }
+          .ep-package-card > h3 { font-size: 1.8rem !important; }
 
           .ep-hero-grid { padding-left: 6vw; padding-right: 6vw; }
         }
