@@ -48,5 +48,15 @@
     "href": "/practices/houston-trust-attorney",
     "overlayColor": "#6B3A5E",
     "overlayTextColor": "#ffffff"
+  },
+  {
+    "id": 6,
+    "title": "Life Insurance Litigation",
+    "description": "Fight wrongful claim denials and interpleader disputes with an attorney who has handled life insurance litigation for over 25 years — recovering benefits families are rightfully owed.",
+    "category": "LIFE INSURANCE",
+    "image": "/life-insurance.webp",
+    "href": "/practice-areas/houston-life-insurance-attorney",
+    "overlayColor": "#D4D95E",
+    "overlayTextColor": "#0b375d"
   }
 ]
