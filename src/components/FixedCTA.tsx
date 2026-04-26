@@ -5,11 +5,11 @@ import { submitForm } from '@/lib/submitForm';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const SERVICE_OPTIONS = [
-  { id: 'probate-avoidance', label: 'Probate Avoidance', icon: '🛡️' },
+  { id: 'estate-planning', label: 'Estate Planning', icon: '🏛️' },
   { id: 'probate-admin', label: 'Probate Administration', icon: '⚖️' },
   { id: 'contested-will', label: 'Contested Will', icon: '📜' },
   { id: 'intestacy', label: 'Intestacy Issues', icon: '👨‍👩‍👧' },
-  { id: 'estate-planning', label: 'Estate Planning', icon: '🏛️' },
+  { id: 'life-insurance', label: 'Life Insurance', icon: '📋' },
   { id: 'trust-admin', label: 'Trust Administrations', icon: '🔐' },
 ];
 
