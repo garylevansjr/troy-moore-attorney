@@ -30,6 +30,16 @@ export default function FaqClient({ faqData }: { faqData: FaqItem[] }) {
   return (
     <>
       <style>{`
+        .hero-img-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(
+            to bottom,
+            rgba(6,30,54,0.55) 0%,
+            rgba(11,55,93,0.42) 40%,
+            rgba(6,30,54,0.75) 100%
+          );
+        }
+
         /* ── Category tab bar ── */
         .faq-tabs {
           display: flex;
@@ -286,12 +296,18 @@ export default function FaqClient({ faqData }: { faqData: FaqItem[] }) {
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section
         style={{
-          background: "var(--hero-gradient)",
-          paddingTop: "calc(72px + clamp(3rem, 5vw, 5rem))",
-          paddingBottom: 0,
+          position: "relative",
+          minHeight: "60vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          backgroundImage: "url(/assets/hero-alt1.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        <div style={WRAP}>
+        <div className="hero-img-overlay" />
+        <div style={{ position: "relative", zIndex: 1, paddingLeft: "10vw", paddingRight: "10vw", paddingTop: "calc(72px + clamp(3rem, 5vw, 5rem))", paddingBottom: 0 }}>
           <p
             className="eyebrow"
             style={{

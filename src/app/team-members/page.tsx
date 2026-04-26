@@ -25,6 +25,16 @@ export default function TeamPage() {
   return (
     <>
       <style>{`
+        .hero-img-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(
+            to bottom,
+            rgba(6,30,54,0.55) 0%,
+            rgba(11,55,93,0.42) 40%,
+            rgba(6,30,54,0.75) 100%
+          );
+        }
+
         .team-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -72,12 +82,18 @@ export default function TeamPage() {
         {/* ── HERO ─────────────────────────────────────────────── */}
         <section
           style={{
-            background: "var(--hero-gradient)",
-            paddingTop: "calc(72px + clamp(4rem, 7vw, 8rem))",
-            paddingBottom: "clamp(4rem, 6vw, 6rem)",
+            position: "relative",
+            minHeight: "60vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            backgroundImage: "url(/assets/hero-alt2.webp)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
-          <div style={WRAP}>
+          <div className="hero-img-overlay" />
+          <div style={{ position: "relative", zIndex: 1, paddingLeft: "10vw", paddingRight: "10vw", paddingTop: "calc(72px + clamp(4rem, 7vw, 8rem))", paddingBottom: "clamp(4rem, 6vw, 6rem)" }}>
             <p
               className="eyebrow"
               style={{
