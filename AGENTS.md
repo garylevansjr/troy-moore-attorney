@@ -107,3 +107,6 @@ All website copy lives in **`src/data/*.json`** files. These are the only files 
 
 <!-- The WWC agent appends completed changes below this line. -->
 <!-- FORMAT: ## YYYY-MM-DD | Ticket <id> | <summary> -->
+
+## 2026-04-27 | Ticket 8d029bb4 | Updated homepage headline to add four exclamation marks at the end.
+Changed: `src/data/hero.json`
