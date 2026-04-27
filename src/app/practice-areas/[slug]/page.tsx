@@ -416,7 +416,7 @@ export default async function GeoPage({
         {/* ── HERO ─────────────────────────────────────────────── */}
         <section
           style={{
-            backgroundColor: "var(--navy)",
+            background: "var(--hero-gradient)",
             paddingTop: "calc(72px + clamp(3rem, 5vw, 6rem))",
             paddingBottom: 0,
             position: "relative",
