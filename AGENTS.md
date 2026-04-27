@@ -124,3 +124,6 @@ Changed: `src/data/hero.json`
 
 ## 2026-04-27 | Ticket 60061aa4 | Added five question marks to the end of the homepage headline.
 Changed: `src/data/hero.json`
+
+## 2026-04-27 | Ticket e2cf8e2d | Appended ", Hi Caden!" to the homepage headline.
+Changed: `src/data/hero.json`
