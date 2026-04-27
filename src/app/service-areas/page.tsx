@@ -37,16 +37,18 @@ export default function ServiceAreasPage() {
         {/* Hero */}
         <section
           style={{
-            backgroundColor: "var(--navy)",
-            paddingTop: "calc(72px + clamp(3.5rem, 5vw, 6rem))",
-            paddingBottom: "clamp(3.5rem, 5vw, 6rem)",
             position: "relative",
-            overflow: "hidden",
+            minHeight: "60vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            backgroundImage: "url(/assets/hero-videos.webp)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
-          <div aria-hidden style={{ position: "absolute", top: "-20%", right: "-10%", width: "60vw", height: "60vw", borderRadius: "50%", border: "1px solid rgba(195,160,91,0.07)", pointerEvents: "none" }} />
-          <div aria-hidden style={{ position: "absolute", top: "5%", right: "-5%", width: "42vw", height: "42vw", borderRadius: "50%", border: "1px solid rgba(195,160,91,0.05)", pointerEvents: "none" }} />
-          <div style={WRAP}>
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(6,30,54,0.55) 0%, rgba(11,55,93,0.42) 40%, rgba(6,30,54,0.75) 100%)" }} />
+          <div style={{ position: "relative", zIndex: 1, ...WRAP, paddingTop: "calc(72px + clamp(3.5rem, 5vw, 6rem))", paddingBottom: "clamp(3.5rem, 5vw, 6rem)" }}>
             <p className="eyebrow" style={{ color: "var(--gold)", marginBottom: "clamp(0.75rem, 1.2vw, 1.2rem)", fontSize: "clamp(0.6rem, 0.7vw, 0.8rem)" }}>
               Houston &amp; Surrounding Areas
             </p>
