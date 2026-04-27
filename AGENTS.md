@@ -127,3 +127,6 @@ Changed: `src/data/hero.json`
 
 ## 2026-04-27 | Ticket e2cf8e2d | Appended ", Hi Caden!" to the homepage headline.
 Changed: `src/data/hero.json`
+
+## 2026-04-27 | Ticket 4939dd49 | Updated Bill Darnell's testimonial phrasing.
+Changed: `src/data/testimonials.json`
