@@ -214,3 +214,6 @@ Changed: `src/data/faq.json`
 
 ## 2026-04-28 | Ticket 9a657ad3 | Updated K.W. testimonial: replaced "long lasting trusted ally" with "trusted partner".
 Changed: `src/data/testimonials.json`
+
+## 2026-04-28 | Ticket 688ac763 | Updated testimonial author from "K.W." to "Karen W."
+Changed: `src/data/testimonials.json`
