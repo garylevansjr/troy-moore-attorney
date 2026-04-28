@@ -185,3 +185,6 @@ Changed: `src/data/hero.json`
 
 ## 2026-04-27 | Ticket 671349a0 | Added new Estate Planning FAQ entry about estate planning timeline (id 24) and renumbered subsequent entries.
 Changed: `src/data/faq.json`
+
+## 2026-04-28 | Ticket 174d5e48 | Added new Estate Planning FAQ "Do I need a will if I have a trust?" as id 25, renumbered Other Practices entries to 26-30.
+Changed: `src/data/faq.json`
