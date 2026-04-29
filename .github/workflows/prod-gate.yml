@@ -127,7 +127,9 @@ jobs:
           ROUTES_JSON:  ${{ needs.setup.outputs.routes_json }}
 
       - name: Run Lighthouse CI
-        run: lhci collect --config=.lighthouserc.json
+        run: |
+          lhci collect --config=.lighthouserc.json
+          lhci upload --config=.lighthouserc.json
         continue-on-error: true
 
       - name: Process Lighthouse results
