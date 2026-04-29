@@ -129,7 +129,9 @@ jobs:
       - name: Run Lighthouse CI
         run: |
           lhci collect --config=.lighthouserc.json
-          lhci upload --config=.lighthouserc.json
+          lhci upload --config=.lighthouserc.json || true
+          echo "--- lhci-results contents ---"
+          ls -la lhci-results/ || echo "(not found)"
         continue-on-error: true
 
       - name: Process Lighthouse results
