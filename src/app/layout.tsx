@@ -52,7 +52,7 @@ export default function RootLayout({
         <TransitionManager>{children}</TransitionManager>
         <FixedCTA show={true} />
         {/* WWC Edit Overlay — no-op for normal visitors; activates via signed token in URL hash */}
-        <script src="https://wwc-edit-overlay-j6yobi88u-wwcpro.vercel.app/wwc-edit-overlay.js" async defer></script>
+        <script src="https://overlay.wwcpro.com/wwc-edit-overlay.js" async defer></script>
       </body>
     </html>
   );
