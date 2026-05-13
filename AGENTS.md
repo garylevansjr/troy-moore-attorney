@@ -226,3 +226,6 @@ Changed: `src/data/hero.json`
 
 ## 2026-05-13 | Ticket 4db6cbda | Updated hero eyebrow from "TROY M. MOORE" to "GRANT E. MERRITT"
 Changed: `src/data/hero.json`
+
+## 2026-05-13 | Ticket b9506f59 | Updated homepage headline from "Top Probate, Estate Planning, & Trusts Attorney" to "HELL YELL!"
+Changed: `src/data/hero.json`
